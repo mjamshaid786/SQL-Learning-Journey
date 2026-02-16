@@ -1,46 +1,49 @@
-SQL Learning Journey - From Zero to Hero 🚀
-Is repository mein meri SQL seekhne ki progress aur hand-on practice codes hain. Main Data with Baraa ka "30 Hours SQL Full Course" follow kar raha hoon taaki real-world data engineering aur analytics skills gain kar sakoon.
+🚀 Project Overview
+This repository serves as a live documentation of my technical growth in SQL. It includes practice scripts, database schemas, and problem-solving queries based on real-world industry scenarios.
 
-📌 Progress Overview
-Course Source: SQL Full Course for Beginners (30 Hours) - Data with Baraa
+Course Resource: 
 
-Current Status: Chapter 1 & 2 Completed (1 Hour 32 Minutes) ✅
+Current Milestone: Phase 1: Foundations (Chapters 1 & 2 Completed)
 
-Current Level: Beginner
+Primary Tool: Microsoft SQL Server Management Studio (SSMS)
 
-📂 Chapters Covered
-🔹 Chapter 1: Introduction to Databases & SQL
-Is chapter mein maine database ke basics aur environment setup ke baare mein seekha:
+📂 Learning Progress
+✅ Phase 1: Database Essentials (Chapters 1 - 2)
+Completed: ~1.5 Hours of intensive learning
 
-Database Concepts: Data aur Database Management Systems (DBMS) kya hote hain.
+Key Concepts Mastered:
 
-Setup: SQL Server aur SQL Server Management Studio (SSMS) ka installation.
+Database Fundamentals: Understanding RDBMS (Relational Database Management Systems) and the role of SQL in Data Engineering.
 
-GUI vs Code: Database interface ko samajhna.
+Environment Setup: Configured SQL Server and SSMS to manage local and production-grade databases.
 
-🔹 Chapter 2: SQL Basics & Querying
-Yahan se maine actual coding shuru ki:
+Data Retrieval: Mastering the SELECT and FROM statements to query specific datasets.
 
-SELECT & FROM: Table se specific columns ka data nikaalna.
+Basic Filtering: Implementing the WHERE clause with comparison operators (=, <>, >, etc.) to extract meaningful insights from raw data.
 
-WHERE Clause: Data ko conditions ke base par filter karna.
+Database Schema: Understanding how tables are structured and how data types define column attributes.
 
-Basic Operators: =, <>, >, <, AND, OR ka istemal.
+🛠 Tech Stack
+Language: SQL (T-SQL / Microsoft SQL Server)
 
-Table Structure: Database mein table kaise create hoti hai aur uska schema kya hota hai.
+Interface: SQL Server Management Studio (SSMS)
 
-🛠️ Tech Stack Used
-Language: SQL (Structured Query Language)
+Methodology: Hands-on project-based learning
 
-Tool: Microsoft SQL Server / SSMS
+📈 Roadmap & Upcoming Milestones
+[x] Phase 1: SQL Foundations (Basics, Filtering, Setup)
 
-Concepts: Data Retrieval, Data Filtering, Database Design.
+[ ] Phase 2: Intermediate Data Transformation (Joins, Set Operators, Row-level Functions)
 
-🚀 Future Goals
-[ ] Intermediate SQL (Joins, Aggregations, Subqueries)
+[ ] Phase 3: Advanced Analytics (Window Functions, Aggregations, Subqueries)
 
-[ ] Advanced SQL (Window Functions, CTEs, Stored Procedures)
+[ ] Phase 4: Database Programming (Stored Procedures, Triggers, CTEs)
 
-[ ] Real-world Data Analytics Projects
+[ ] Phase 5: Optimization & Performance Tuning (Indexing, Partitioning)
 
-Follow my journey as I transition from a SQL beginner to a Data Professional!
+[ ] Final Capstone: End-to-End Data Warehouse Project
+
+👤 Connect with Me
+I am actively learning and documenting my transition into the data field. If you have any suggestions or want to collaborate, feel free to reach out!
+
+[Muhammad Jamshaid] Aspiring Data Professional [https://www.linkedin.com/in/muhammad-jamshaid-a04054370/] | []
