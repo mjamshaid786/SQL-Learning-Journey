@@ -1,46 +1,55 @@
-SQL Learning Journey - From Zero to Hero 🚀
-Is repository mein meri SQL seekhne ki progress aur hand-on practice codes hain. Main Data with Baraa ka "30 Hours SQL Full Course" follow kar raha hoon taaki real-world data engineering aur analytics skills gain kar sakoon.
+# SQL Mastery: From Zero to Hero 📊
 
-📌 Progress Overview
-Course Source: SQL Full Course for Beginners (30 Hours) - Data with Baraa
+Welcome to my SQL learning repository! This project documents my journey through the **30-Hour SQL Full Course** by **Data with Baraa** (Lead Data Engineer at Mercedes-Benz). My goal is to transition from foundational concepts to advanced data engineering and analytical workflows.
 
-Current Status: Chapter 1 & 2 Completed (1 Hour 32 Minutes) ✅
+## 🚀 Project Overview
+This repository serves as a live documentation of my technical growth in SQL. It includes practice scripts, database schemas, and problem-solving queries based on real-world industry scenarios.
 
-Current Level: Beginner
+- **Course Resource:** [SQL Full Course for Beginners (30 Hours)](https://www.youtube.com/watch?v=SSKVgrwhzus)
+- **Current Milestone:** Phase 2: Schema Design & Data Manipulation (Chapter  (3 - 4) Completed)
+- **Primary Tool:** Microsoft SQL Server Management Studio (SSMS)
 
-📂 Chapters Covered
-🔹 Chapter 1: Introduction to Databases & SQL
-Is chapter mein maine database ke basics aur environment setup ke baare mein seekha:
+---
 
-Database Concepts: Data aur Database Management Systems (DBMS) kya hote hain.
+## 📂 Learning Progress
 
-Setup: SQL Server aur SQL Server Management Studio (SSMS) ka installation.
+### ✅ Phase 1: Database Essentials (Chapters 1 - 2)
+* **Database Fundamentals:** RDBMS roles and environment setup.
+* **Data Retrieval:** Mastering `SELECT`, `FROM`, and `WHERE` clauses.
 
-GUI vs Code: Database interface ko samajhna.
+### ✅ Phase 2: DDL & DML Operations (Chapter 3 - 4)
+*Completed: Advanced database management and data handling.*
 
-🔹 Chapter 2: SQL Basics & Querying
-Yahan se maine actual coding shuru ki:
+**Data Definition Language (DDL) - Managing Structure:**
+* **CREATE TABLE:** Designing table schemas from scratch.
+* **ALTER TABLE:** Modifying existing table structures (Adding and Dropping columns).
+* **DROP TABLE:** Safely removing tables from the database.
 
-SELECT & FROM: Table se specific columns ka data nikaalna.
+**Data Manipulation Language (DML) - Managing Content:**
+* **INSERT:** Adding new records into tables.
+* **UPDATE:** Modifying existing data within a table using conditional logic.
+* **DELETE:** Removing specific rows while maintaining database integrity.
 
-WHERE Clause: Data ko conditions ke base par filter karna.
+---
 
-Basic Operators: =, <>, >, <, AND, OR ka istemal.
+## 🛠 Tech Stack
+* **Language:** SQL (T-SQL / Microsoft SQL Server)
+* **Interface:** SQL Server Management Studio (SSMS)
+* **Core Skills:** DDL (Data Definition), DML (Data Manipulation), Data Filtering.
 
-Table Structure: Database mein table kaise create hoti hai aur uska schema kya hota hai.
+---
 
-🛠️ Tech Stack Used
-Language: SQL (Structured Query Language)
+## 📈 Roadmap & Upcoming Milestones
+- [x] **Phase 1:** SQL Foundations (Basics, Filtering, Setup)
+- [x] **Phase 2:** Schema Design & Data Management (DDL/DML)
+- [ ] **Phase 3:** Intermediate Analytics (Joins, Set Operators, Row-level Functions)
+- [ ] **Phase 4:** Advanced Analytics (Window Functions, Aggregations, Subqueries)
+- [ ] **Phase 5:** Database Programming (Stored Procedures, Triggers, CTEs)
+- [ ] **Final Capstone:** End-to-End Data Warehouse Project
 
-Tool: Microsoft SQL Server / SSMS
+---
 
-Concepts: Data Retrieval, Data Filtering, Database Design.
+## 👤 Connect with Me
+I am actively learning and documenting my transition into the data field.
 
-🚀 Future Goals
-[ ] Intermediate SQL (Joins, Aggregations, Subqueries)
-
-[ ] Advanced SQL (Window Functions, CTEs, Stored Procedures)
-
-[ ] Real-world Data Analytics Projects
-
-Follow my journey as I transition from a SQL beginner to a Data Professional!
+**[Muhammad Jamshaid]** 
