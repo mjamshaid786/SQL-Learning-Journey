@@ -52,4 +52,4 @@ This repository serves as a live documentation of my technical growth in SQL. It
 ## 👤 Connect with Me
 I am actively learning and documenting my transition into the data field.
 
-**[Insert Your Name]** | [Your LinkedIn Profile Link]
+**[Muhammad Jamshaid]** 
