@@ -6,7 +6,7 @@ Welcome to my SQL learning repository! This project documents my journey through
 This repository serves as a live documentation of my technical growth in SQL. It includes practice scripts, database schemas, and problem-solving queries based on real-world industry scenarios.
 
 - **Course Resource:** [SQL Full Course for Beginners (30 Hours)](https://www.youtube.com/watch?v=SSKVgrwhzus)
-- **Current Milestone:** Phase 2: Schema Design & Data Manipulation (Chapter 3 Completed)
+- **Current Milestone:** Phase 2: Schema Design & Data Manipulation (Chapter  (3 - 4) Completed)
 - **Primary Tool:** Microsoft SQL Server Management Studio (SSMS)
 
 ---
@@ -17,7 +17,7 @@ This repository serves as a live documentation of my technical growth in SQL. It
 * **Database Fundamentals:** RDBMS roles and environment setup.
 * **Data Retrieval:** Mastering `SELECT`, `FROM`, and `WHERE` clauses.
 
-### ✅ Phase 2: DDL & DML Operations (Chapter 3)
+### ✅ Phase 2: DDL & DML Operations (Chapter 3 - 4)
 *Completed: Advanced database management and data handling.*
 
 **Data Definition Language (DDL) - Managing Structure:**
