@@ -1,12 +1,10 @@
 # SQL Mastery: From Zero to Hero 📊
 
-Welcome to my SQL learning repository! This project documents my journey through the **30-Hour SQL Full Course** by **Data with Baraa** (Lead Data Engineer at Mercedes-Benz). My goal is to transition from foundational concepts to advanced data engineering and analytical workflows.
+Welcome to my SQL learning repository! This project documents my journey through the **30-Hour SQL Full Course** by **Data with Baraa**. I am building a strong foundation in database management and advanced data analytics.
 
 ## 🚀 Project Overview
-This repository serves as a live documentation of my technical growth in SQL. It includes practice scripts, database schemas, and problem-solving queries based on real-world industry scenarios.
-
 - **Course Resource:** [SQL Full Course for Beginners (30 Hours)](https://www.youtube.com/watch?v=SSKVgrwhzus)
-- **Current Milestone:** Phase 2: Schema Design & Data Manipulation (Chapter  (3 - 4) Completed)
+- **Current Milestone:** Phase 3: Advanced Filtering & Logic (Chapter 5 Completed) ✅
 - **Primary Tool:** Microsoft SQL Server Management Studio (SSMS)
 
 ---
@@ -14,42 +12,88 @@ This repository serves as a live documentation of my technical growth in SQL. It
 ## 📂 Learning Progress
 
 ### ✅ Phase 1: Database Essentials (Chapters 1 - 2)
-* **Database Fundamentals:** RDBMS roles and environment setup.
-* **Data Retrieval:** Mastering `SELECT`, `FROM`, and `WHERE` clauses.
+* Introduction to RDBMS and environment setup.
+* Basic querying using `SELECT`, `FROM`, and `WHERE`.
 
-### ✅ Phase 2: DDL & DML Operations (Chapter 3 - 4)
-*Completed: Advanced database management and data handling.*
+### ✅ Phase 2: Schema Design & Data Management (Chapter 3 - 4)
+* **DDL:** `CREATE`, `ALTER`, and `DROP` tables.
+* **DML:** `INSERT`, `UPDATE`, and `DELETE` records.
 
-**Data Definition Language (DDL) - Managing Structure:**
-* **CREATE TABLE:** Designing table schemas from scratch.
-* **ALTER TABLE:** Modifying existing table structures (Adding and Dropping columns).
-* **DROP TABLE:** Safely removing tables from the database.
+### ✅ Phase 3: Advanced Filtering & Logical Operators (Chapter 5)
+*Completed: Mastered the ability to extract precise datasets using complex conditions.*
 
-**Data Manipulation Language (DML) - Managing Content:**
-* **INSERT:** Adding new records into tables.
-* **UPDATE:** Modifying existing data within a table using conditional logic.
-* **DELETE:** Removing specific rows while maintaining database integrity.
+**Operators & Logic Covered:**
+* **Comparison Operators:** Used `=`, `!=`, `>`, `<`, `>=`, `<=` for precise data matching.
+* **Logical Operators:** Combined multiple conditions using `AND`, `OR`, and `NOT`.
+* **Range & List Filtering:** * `BETWEEN`: Selecting data within a specific numerical or date range.
+    * `IN`: Filtering data based on a specific list of values.
+* **Pattern Matching:** * `LIKE`: Utilizing wildcards (`%`, `_`) to search for partial text matches (e.g., finding names starting with 'A').
 
 ---
 
 ## 🛠 Tech Stack
 * **Language:** SQL (T-SQL / Microsoft SQL Server)
-* **Interface:** SQL Server Management Studio (SSMS)
-* **Core Skills:** DDL (Data Definition), DML (Data Manipulation), Data Filtering.
+* **Key Skills:** Data Filtering, Pattern Matching, Conditional Logic, DDL/DML.
 
 ---
 
 ## 📈 Roadmap & Upcoming Milestones
-- [x] **Phase 1:** SQL Foundations (Basics, Filtering, Setup)
-- [x] **Phase 2:** Schema Design & Data Management (DDL/DML)
-- [ ] **Phase 3:** Intermediate Analytics (Joins, Set Operators, Row-level Functions)
-- [ ] **Phase 4:** Advanced Analytics (Window Functions, Aggregations, Subqueries)
-- [ ] **Phase 5:** Database Programming (Stored Procedures, Triggers, CTEs)
+- [x] **Phase 1-2:** Foundations & Data Management
+- [x] **Phase 3:** Advanced Filtering (Current)
+- [ ] **Phase 4:** Joins & Set Operators (Combining multiple tables)
+- [ ] **Phase 5:** Aggregations & Window Functions
 - [ ] **Final Capstone:** End-to-End Data Warehouse Project
 
 ---
 
 ## 👤 Connect with Me
-I am actively learning and documenting my transition into the data field.
+[Insert Your Name] | [# SQL Mastery: From Zero to Hero 📊
 
-**[Muhammad Jamshaid]** 
+Welcome to my SQL learning repository! This project documents my journey through the **30-Hour SQL Full Course** by **Data with Baraa**. I am building a strong foundation in database management and advanced data analytics.
+
+## 🚀 Project Overview
+- **Course Resource:** [SQL Full Course for Beginners (30 Hours)](https://www.youtube.com/watch?v=SSKVgrwhzus)
+- **Current Milestone:** Phase 3: Advanced Filtering & Logic (Chapter 5 Completed) ✅
+- **Primary Tool:** Microsoft SQL Server Management Studio (SSMS)
+
+---
+
+## 📂 Learning Progress
+
+### ✅ Phase 1: Database Essentials (Chapters 1 - 2)
+* Introduction to RDBMS and environment setup.
+* Basic querying using `SELECT`, `FROM`, and `WHERE`.
+
+### ✅ Phase 2: Schema Design & Data Management (Chapter 3)
+* **DDL:** `CREATE`, `ALTER`, and `DROP` tables.
+* **DML:** `INSERT`, `UPDATE`, and `DELETE` records.
+
+### ✅ Phase 3: Advanced Filtering & Logical Operators (Chapter 5)
+*Completed: Mastered the ability to extract precise datasets using complex conditions.*
+
+**Operators & Logic Covered:**
+* **Comparison Operators:** Used `=`, `!=`, `>`, `<`, `>=`, `<=` for precise data matching.
+* **Logical Operators:** Combined multiple conditions using `AND`, `OR`, and `NOT`.
+* **Range & List Filtering:** * `BETWEEN`: Selecting data within a specific numerical or date range.
+    * `IN`: Filtering data based on a specific list of values.
+* **Pattern Matching:** * `LIKE`: Utilizing wildcards (`%`, `_`) to search for partial text matches (e.g., finding names starting with 'A').
+
+---
+
+## 🛠 Tech Stack
+* **Language:** SQL (T-SQL / Microsoft SQL Server)
+* **Key Skills:** Data Filtering, Pattern Matching, Conditional Logic, DDL/DML.
+
+---
+
+## 📈 Roadmap & Upcoming Milestones
+- [x] **Phase 1-2:** Foundations & Data Management
+- [x] **Phase 3:** Advanced Filtering (Current)
+- [ ] **Phase 4:** Joins & Set Operators (Combining multiple tables)
+- [ ] **Phase 5:** Aggregations & Window Functions
+- [ ] **Final Capstone:** End-to-End Data Warehouse Project
+
+---
+
+## 👤 Connect with Me
+[Muhammad Jamshaid] | [LINkedin.com/in/muhammad-jamshaid-a04054370/]
