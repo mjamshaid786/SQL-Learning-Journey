@@ -1,54 +1,50 @@
 # SQL Mastery: From Zero to Hero 📊
 
-Welcome to my SQL learning repository! This project documents my journey through the **30-Hour SQL Full Course** by **Data with Baraa**. I am building a strong foundation in database management and advanced data analytics.
+Welcome to my SQL learning repository! This project documents my journey through the **30-Hour SQL Full Course** by **Data with Baraa**.
 
 ## 🚀 Project Overview
 - **Course Resource:** [SQL Full Course for Beginners (30 Hours)](https://www.youtube.com/watch?v=SSKVgrwhzus)
-- **Current Milestone:** Phase 3: Advanced Filtering & Logic (Chapter 5 Completed) ✅
+- **Current Milestone:** Phase 4: Relational Data & Joins (Chapter 6 Part 1 Completed) ✅
 - **Primary Tool:** Microsoft SQL Server Management Studio (SSMS)
 
 ---
 
 ## 📂 Learning Progress
 
-### ✅ Phase 1: Database Essentials (Chapters 1 - 2)
-* Introduction to RDBMS and environment setup.
-* Basic querying using `SELECT`, `FROM`, and `WHERE`.
+### ✅ Phase 1-3: Foundations, DDL/DML & Filtering
+* Basic querying, Table structures (DDL), Data manipulation (DML).
+* Advanced filtering using Logical Operators and Pattern Matching.
 
-### ✅ Phase 2: Schema Design & Data Management (Chapter 3 - 4)
-* **DDL:** `CREATE`, `ALTER`, and `DROP` tables.
-* **DML:** `INSERT`, `UPDATE`, and `DELETE` records.
+### ✅ Phase 4: Mastering Joins (Chapter 6 - Part 1)
+*Completed: Learned how to combine data from multiple tables using relational logic.*
 
-### ✅ Phase 3: Advanced Filtering & Logical Operators (Chapter 5)
-*Completed: Mastered the ability to extract precise datasets using complex conditions.*
+**Types of Joins Covered:**
+* **Inner Join:** Fetching matching records from both tables.
+* **Left Join:** Keeping all records from the left table and matching from the right.
+* **Right Join:** Keeping all records from the right table and matching from the left.
+* **Full Join:** Combining all records from both tables (Union of datasets).
 
-**Operators & Logic Covered:**
-* **Comparison Operators:** Used `=`, `!=`, `>`, `<`, `>=`, `<=` for precise data matching.
-* **Logical Operators:** Combined multiple conditions using `AND`, `OR`, and `NOT`.
-* **Range & List Filtering:** * `BETWEEN`: Selecting data within a specific numerical or date range.
-    * `IN`: Filtering data based on a specific list of values.
-* **Pattern Matching:** * `LIKE`: Utilizing wildcards (`%`, `_`) to search for partial text matches (e.g., finding names starting with 'A').
+**Advanced Anti-Joins (Data Auditing):**
+* **Left Anti Join:** Identifying records present *only* in the left table (where no match exists on the right).
+* **Right Anti Join:** Identifying records present *only* in the right table.
+* **Full Anti Join:** Finding all non-matching records from both sides.
 
 ---
 
 ## 🛠 Tech Stack
 * **Language:** SQL (T-SQL / Microsoft SQL Server)
-* **Key Skills:** Data Filtering, Pattern Matching, Conditional Logic, DDL/DML.
+* **Key Skills:** Data Normalization, Table Relationships, Multi-table Querying, Anti-Join Logic.
 
 ---
 
 ## 📈 Roadmap & Upcoming Milestones
-- [x] **Phase 1-2:** Foundations & Data Management
-- [x] **Phase 3:** Advanced Filtering (Current)
-- [ ] **Phase 4:** Joins & Set Operators (Combining multiple tables)
-- [ ] **Phase 5:** Aggregations & Window Functions
+- [x] **Phase 1-3:** Foundations & Filtering
+- [x] **Phase 4:** Joins & Relational Logic (Current)
+- [ ] **Phase 5:** Set Operators (UNION, INTERSECT, EXCEPT)
+- [ ] **Phase 6:** Aggregations & Analytics functions
 - [ ] **Final Capstone:** End-to-End Data Warehouse Project
 
 ---
 
 ## 👤 Connect with Me
-[Muhammad Jamshaid] | [LINkedin.com/in/muhammad-jamshaid-a04054370/]
-
-
-
-
+[Muhammad Jamshaid] | [https://www.linkedin.com/in/muhammad-jamshaid-a04054370/]
