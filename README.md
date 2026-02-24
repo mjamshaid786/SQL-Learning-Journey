@@ -4,44 +4,38 @@ Welcome to my SQL learning repository! This project documents my journey through
 
 ## 🚀 Project Overview
 - **Course Resource:** [SQL Full Course for Beginners (30 Hours)](https://www.youtube.com/watch?v=SSKVgrwhzus)
-- **Current Milestone:** Phase 4: Relational Data & Joins (Chapter 6 Part 1 Completed) ✅
+- **Current Milestone:** Phase 5: Set Operations & Data Consolidation (Chapter 6 Part 2 Completed) ✅
 - **Primary Tool:** Microsoft SQL Server Management Studio (SSMS)
 
 ---
 
 ## 📂 Learning Progress
 
-### ✅ Phase 1-3: Foundations, DDL/DML & Filtering
-* Basic querying, Table structures (DDL), Data manipulation (DML).
-* Advanced filtering using Logical Operators and Pattern Matching.
+### ✅ Phase 1-4: Foundations, Filtering & Joins
+* Mastered DDL/DML, Advanced Filtering, and Relational Joins (Inner, Left, Right, Full, and Anti-Joins).
 
-### ✅ Phase 4: Mastering Joins (Chapter 6 - Part 1)
-*Completed: Learned how to combine data from multiple tables using relational logic.*
+### ✅ Phase 5: Set Operators (Chapter 6 - Part 2)
+*Completed: Learned how to combine results from multiple queries vertically.*
 
-**Types of Joins Covered:**
-* **Inner Join:** Fetching matching records from both tables.
-* **Left Join:** Keeping all records from the left table and matching from the right.
-* **Right Join:** Keeping all records from the right table and matching from the left.
-* **Full Join:** Combining all records from both tables (Union of datasets).
-
-**Advanced Anti-Joins (Data Auditing):**
-* **Left Anti Join:** Identifying records present *only* in the left table (where no match exists on the right).
-* **Right Anti Join:** Identifying records present *only* in the right table.
-* **Full Anti Join:** Finding all non-matching records from both sides.
+**Operations Mastered:**
+* **UNION:** Combines result sets and removes duplicate rows.
+* **UNION ALL:** Combines result sets including all duplicates (Faster performance).
+* **INTERSECT:** Returns only the common rows present in both result sets.
+* **EXCEPT:** Returns rows from the first query that are not present in the second query.
 
 ---
 
 ## 🛠 Tech Stack
 * **Language:** SQL (T-SQL / Microsoft SQL Server)
-* **Key Skills:** Data Normalization, Table Relationships, Multi-table Querying, Anti-Join Logic.
+* **Key Skills:** Data Consolidation, Set Theory, Query Optimization, Multi-query logic.
 
 ---
 
 ## 📈 Roadmap & Upcoming Milestones
-- [x] **Phase 1-3:** Foundations & Filtering
-- [x] **Phase 4:** Joins & Relational Logic (Current)
-- [ ] **Phase 5:** Set Operators (UNION, INTERSECT, EXCEPT)
-- [ ] **Phase 6:** Aggregations & Analytics functions
+- [x] **Phase 1-4:** Foundations & Joins
+- [x] **Phase 5:** Set Operators (Current)
+- [ ] **Phase 6:** Row-level Functions (String, Date, Math)
+- [ ] **Phase 7:** Aggregations & Window Functions
 - [ ] **Final Capstone:** End-to-End Data Warehouse Project
 
 ---
