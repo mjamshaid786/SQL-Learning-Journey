@@ -4,41 +4,39 @@ Welcome to my SQL learning repository! This project documents my journey through
 
 ## 🚀 Project Overview
 - **Course Resource:** [SQL Full Course for Beginners (30 Hours)](https://www.youtube.com/watch?v=SSKVgrwhzus)
-- **Current Milestone:** Phase 6: Scalar & Row-Level Functions (Chapter 7 Completed) ✅
+- **Current Milestone:** Phase 7: Date & Time Mastery (Chapter 7 Completed) ✅
 - **Primary Tool:** Microsoft SQL Server Management Studio (SSMS)
 
 ---
 
 ## 📂 Learning Progress
 
-### ✅ Phase 1-5: Foundations, Joins & Set Operators
-* Mastered DDL/DML, Advanced Filtering, and Relational Logic (Joins & Sets).
+### ✅ Phase 1-6: Foundations & Data Transformation
+* Mastered DDL/DML, Joins, Set Operators, and String/Numeric Functions.
 
-### ✅ Phase 6: Row-Level Functions (Chapter 7)
-*Completed: Mastered data transformation techniques for strings and numbers.*
+### ✅ Phase 7: Date & Time Intelligence (Chapter 7 - Part 3)
+*Completed: Mastered time-series data analysis and temporal transformations.*
 
-**String Functions Covered:**
-* **Formatting:** `UPPER`, `LOWER`, `TRIM` (Removing extra spaces).
-* **Manipulation:** `CONCAT` (Merging columns), `REPLACE` (Changing specific text).
-* **Extraction:** `LEFT`, `RIGHT`, `SUBSTRING`, `LEN` (Length of strings).
-
-**Numeric Functions Covered:**
-* **ROUND:** Precision control for decimal values (e.g., Currency formatting).
-* **ABS:** Calculating absolute values (Converting negatives to positives).
+**Technical Skills Acquired:**
+* **Part Extraction:** Used `DAY`, `MONTH`, `YEAR`, `DATEPART`, and `DATENAME` to isolate specific time attributes. Mastered `EOMONTH` for end-of-month reporting.
+* **Format & Casting:** Leveraged `CAST`, `CONVERT`, and `FORMAT` to transform date types into various regional and business-standard formats.
+* **Calculations:** * `DATEDIFF`: Calculating age, tenure, or time elapsed between events.
+    * `DATEADD`: Projecting future dates or adjusting timelines.
+* **Validation:** Using `ISDATE` to ensure data integrity during ETL processes.
 
 ---
 
 ## 🛠 Tech Stack
 * **Language:** SQL (T-SQL / Microsoft SQL Server)
-* **Key Skills:** Data Cleaning, Text Parsing, Mathematical Transformations, Report Formatting.
+* **Key Skills:** Temporal Analysis, Data Type Casting, Time-Series Reporting, ETL Validation.
 
 ---
 
 ## 📈 Roadmap & Upcoming Milestones
-- [x] **Phase 1-5:** Foundations & Relational Logic
-- [x] **Phase 6:** Row-level Functions (Current)
-- [ ] **Phase 7:** Date & Time Functions (Crucial for Time-series Analysis)
-- [ ] **Phase 8:** Aggregations & Window Functions
+- [x] **Phase 1-6:** Foundations & Logic
+- [x] **Phase 7:** Date & Time Intelligence (Current)
+- [ ] **Phase 8:** Advanced Analytics (Aggregations & Window Functions)
+- [ ] **Phase 9:** Performance Tuning & Optimization
 - [ ] **Final Capstone:** End-to-End Data Warehouse Project
 
 ---
