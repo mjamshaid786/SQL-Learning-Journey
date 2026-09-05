@@ -1,5 +1,4 @@
 
-````markdown
 # 🛒 E-Commerce Order Explorer
 
 A beginner-friendly **SQL + PostgreSQL + Python + Streamlit** project designed to practice real-world SQL querying through an interactive web interface.
