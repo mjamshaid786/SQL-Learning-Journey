@@ -1,4 +1,3 @@
-### `README.md`
 
 ````markdown
 # 🛒 E-Commerce Order Explorer
