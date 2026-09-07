@@ -3,8 +3,9 @@ from database import connect_database
 from create_table import table_creation
 from query import run_query
 from data_insertion import insert_data
+from create_new_table import table
 #------------ STREAMLIT INTERFACE -----------
-st.title("E-Commerce Order Explorer")
+st.title("E-COMMERERCE ORDER EXPLORER")
 
 #------- Database connection -------
 is_connected, result = connect_database()
@@ -25,9 +26,11 @@ else:
 
 #------- Query Runner  -------
 
-option = st.selectbox("What Do You Want", ['Insert Data', 'Fetch Data'])
+option = st.selectbox("What Do You Want", ['Insert Data', 'Fetch Data', 'Create Table'])
 
 if option == "Fetch Data":
     run_query()
 elif option == "Insert Data":
     insert_data()
+elif option == "Create Table":
+    table()
