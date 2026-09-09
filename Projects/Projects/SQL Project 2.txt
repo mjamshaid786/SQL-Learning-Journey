@@ -1,0 +1,421 @@
+Task 1
+
+Find all Pending orders from Lahore.
+
+Return:
+
+order_id
+customer_name
+city
+total_amount
+status
+QUERY = SELECT 
+order_id, customer_name, city, total_amount, status
+FROM orders
+WHERE city = 'Lahore' AND status = 'Pending'
+;
+RESULTS:
+1008	Hira Ali	Lahore	18750	Pending
+
+=================================================
+Task 2
+
+Find all orders where:
+
+city = Islamabad
+total amount > 10,000
+
+Return:
+
+order_id
+customer_name
+city
+total_amount
+
+QUERY = SELECT 
+order_id, customer_name, city, total_amount
+FROM orders
+WHERE city = 'Islamabad' AND total_amount > 10000
+; 
+RESULTS:
+1011	Ahmad Hassan	Islamabad	11500
+========================================================
+Task 3
+
+Find orders whose status is either:
+
+Pending
+OR
+Shipped
+
+Return:
+
+order_id
+customer_name
+status
+total_amount
+
+QUERY = SELECT 
+order_id, customer_name, status, total_amount
+FROM orders
+WHERE status = 'Pending' OR status = 'Shipped'
+;
+RESULTS :
+1002	Sara Khan	Pending	7800
+1006	Zainab Noor	Pending	6700
+1008	Hira Ali	Pending	18750
+1012	Fatima Zahra	Pending	8200
+1014	Noor Fatima	Pending	5600
+1016	Bilal Riaz	Pending	9876
+1017	Waseem Akram	Shipped	8768
+1020	Ahmad Raza	Pending	50600
+1021	Hassan Raza	Shipped	45690
+1024	Hamza Waseem	Pending	2500
+1025	Sultan Waseem	Shipped	5000
+===============================================
+Task 4
+
+Find orders where the city is either:
+
+Lahore
+OR
+Faisalabad
+
+Sort them by total_amount from highest to lowest.
+
+
+QUERY = SELECT 
+order_id, customer_name, status, total_amount, city
+FROM orders
+WHERE city = 'Faisalabad' OR city = 'Lahore'
+ORDER BY total_amount DESC
+;
+RESULTS:
+1022	Ali Raza	Delivered	76000	Faisalabad
+1013	Hassan Ali	Delivered	25400	Lahore
+1008	Hira Ali	Pending	18750	Lahore
+1003	Hamza Ahmad	Delivered	15300	Faisalabad
+1001	Ali Raza	Delivered	12500	Lahore
+1007	Usman Tariq	Delivered	9800	Faisalabad
+1017	Waseem Akram	Shipped	8768	Faisalabad
+1018	Naeem Akram	Delivered	8768	Lahore
+1012	Fatima Zahra	Pending	8200	Faisalabad
+1004	Ayesha Malik	Cancelled	4200	Lahore
+===========================================================
+Task 5
+
+Rewrite Task 4 using IN.
+
+Goal: Same business requirement, different SQL approach.
+
+QUERY = SELECT 
+order_id, customer_name, status, total_amount, city
+FROM orders
+WHERE city  IN ('Faisalabad' , 'Lahore')
+ORDER BY total_amount DESC
+;
+RESULTS:
+1022	Ali Raza	Delivered	76000	Faisalabad
+1013	Hassan Ali	Delivered	25400	Lahore
+1008	Hira Ali	Pending	18750	Lahore
+1003	Hamza Ahmad	Delivered	15300	Faisalabad
+1001	Ali Raza	Delivered	12500	Lahore
+1007	Usman Tariq	Delivered	9800	Faisalabad
+1017	Waseem Akram	Shipped	8768	Faisalabad
+1018	Naeem Akram	Delivered	8768	Lahore
+1012	Fatima Zahra	Pending	8200	Faisalabad
+1004	Ayesha Malik	Cancelled	4200	Lahore
+==========================================================
+Task 6
+
+Find all orders from:
+
+Lahore
+Islamabad
+Karachi
+
+Return:
+
+order_id
+customer_name
+city
+order_date
+total_amount
+
+Sort newest → oldest.
+
+QUERY = SELECT 
+order_id, customer_name,  total_amount, city, order_date
+FROM orders
+WHERE city  IN ('Islamabad' , 'Lahore' , 'Karachi')
+ORDER BY order_date DESC
+;
+RESULTS:
+1025	Sultan Waseem	5000	Karachi	2026-06-24
+1024	Hamza Waseem	2500	Islamabad	2026-05-27
+1023	Ali Haidar	20000	Karachi	2026-05-21
+1019	Azeem Akram	9999	Islamabad	2026-03-27
+1018	Naeem Akram	8768	Lahore	2026-03-23
+1015	Daniyal Aslam	19900	Karachi	2026-02-07
+1013	Hassan Ali	25400	Lahore	2026-02-03
+1011	Ahmad Hassan	11500	Islamabad	2026-01-28
+1010	Maryam Iqbal	14200	Karachi	2026-01-25
+1008	Hira Ali	18750	Lahore	2026-01-20
+1006	Zainab Noor	6700	Islamabad	2026-01-15
+1005	Bilal Shah	21900	Karachi	2026-01-12
+1004	Ayesha Malik	4200	Lahore	2026-01-10
+1002	Sara Khan	7800	Islamabad	2026-01-07
+1001	Ali Raza	12500	Lahore	2026-01-05
+=============================================================
+Task 7
+
+Find orders where total_amount is between:
+
+5000 and 15000
+
+Return:
+
+order_id
+customer_name
+total_amount
+
+QUERY= SELECT 
+order_id, customer_name, total_amount 
+FROM orders
+WHERE total_amount BETWEEN 5000 AND 15000
+;
+RESULTS: 
+1001	Ali Raza	12500
+1002	Sara Khan	7800
+1006	Zainab Noor	6700
+1007	Usman Tariq	9800
+1010	Maryam Iqbal	14200
+1011	Ahmad Hassan	11500
+1012	Fatima Zahra	8200
+1014	Noor Fatima	5600
+1016	Bilal Riaz	9876
+1017	Waseem Akram	8768
+1018	Naeem Akram	8768
+1019	Azeem Akram	9999
+1025	Sultan Waseem	5000
+=====================================
+Task 8
+
+Find orders placed between:
+
+2026-01-01
+and
+2026-01-31
+
+Return:
+
+order_id
+customer_name
+order_date
+total_amount
+
+Sort by date newest → oldest.
+QUERY = SELECT 
+order_id, customer_name, total_amount , order_date
+FROM orders
+WHERE order_date BETWEEN '2026-01-01'  AND '2026-01-31'
+ORDER BY order_date DESC
+;
+RESULTS: 
+1011	Ahmad Hassan	11500	2026-01-28
+1010	Maryam Iqbal	14200	2026-01-25
+1009	Saad Khan	3500	2026-01-22
+1008	Hira Ali	18750	2026-01-20
+1007	Usman Tariq	9800	2026-01-18
+1006	Zainab Noor	6700	2026-01-15
+1005	Bilal Shah	21900	2026-01-12
+1004	Ayesha Malik	4200	2026-01-10
+1003	Hamza Ahmad	15300	2026-01-08
+1002	Sara Khan	7800	2026-01-07
+1001	Ali Raza	12500	2026-01-05
+====================================================
+Task 9
+
+Find customers whose name starts with A.
+
+Return:
+
+order_id
+customer_name
+city
+
+QUERY= SELECT 
+order_id, customer_name, city
+FROM orders
+WHERE customer_name LIKE 'A%'
+;
+RESULTS:
+1001	Ali Raza	Lahore
+1004	Ayesha Malik	Lahore
+1011	Ahmad Hassan	Islamabad
+1019	Azeem Akram	Islamabad
+1020	Ahmad Raza	Multan
+1022	Ali Raza	Faisalabad
+1023	Ali Haidar	Karachi
+========================================
+Task 10
+
+Find customers whose name contains Ali anywhere.
+
+Return:
+
+order_id
+customer_name
+city
+total_amount
+QUERY = SELECT 
+order_id, customer_name, city, total_amount
+FROM orders
+WHERE customer_name LIKE '%Ali%'
+;
+RESULTS:
+1001	Ali Raza	Lahore	12500
+1008	Hira Ali	Lahore	18750
+1013	Hassan Ali	Lahore	25400
+1022	Ali Raza	Faisalabad	76000
+1023	Ali Haidar	Karachi	20000
+
+=================================================
+Task 11
+
+Find customers whose name ends with a.
+
+Return:
+
+order_id
+customer_name
+city
+QUERY= SELECT 
+order_id, customer_name, city, total_amount
+FROM orders
+WHERE customer_name LIKE '%a'
+;
+RESULTS:
+1001	Ali Raza	Lahore	12500
+1012	Fatima Zahra	Faisalabad	8200
+1014	Noor Fatima	Multan	5600
+1020	Ahmad Raza	Multan	50600
+1021	Hassan Raza	Rawalpindi	45690
+1022	Ali Raza	Faisalabad	76000
+====================================================
+Task 12
+
+Find orders satisfying all of these conditions:
+
+City is Lahore, Islamabad, or Faisalabad
+Amount is greater than 8,000
+Status is not Cancelled
+
+Return:
+
+order_id
+customer_name
+city
+total_amount
+status
+
+Sort highest amount → lowest.
+QUERY = SELECT 
+order_id, customer_name, city, total_amount, status
+FROM orders
+WHERE  city IN ('Lahore' , 'Faisalabad' , 'Islamabad') AND total_amount > 8000 AND status != 'Cancelled'
+ORDER BY total_amount DESC
+;
+RESULTS:
+1022	Ali Raza	Faisalabad	76000	Delivered
+1013	Hassan Ali	Lahore	25400	Delivered
+1008	Hira Ali	Lahore	18750	Pending
+1003	Hamza Ahmad	Faisalabad	15300	Delivered
+1001	Ali Raza	Lahore	12500	Delivered
+1011	Ahmad Hassan	Islamabad	11500	Delivered
+1007	Usman Tariq	Faisalabad	9800	Delivered
+1017	Waseem Akram	Faisalabad	8768	Shipped
+1018	Naeem Akram	Lahore	8768	Delivered
+1012	Fatima Zahra	Faisalabad	8200	Pending
+===========================================================
+Task 13
+
+Find orders where:
+
+status is Pending OR Shipped
+AND amount is greater than 7,000
+
+Return:
+
+order_id
+customer_name
+city
+total_amount
+status
+Important
+
+Is task mein AND + OR ko correctly combine karna hai.
+
+Yahan logical grouping important hai.
+QUERY = SELECT 
+order_id, customer_name, city, total_amount, status
+FROM orders
+WHERE (status = 'Pending' OR status = 'Shipped')  AND total_amount > 7000
+;
+RESULTS:
+1002	Sara Khan	Islamabad	7800	Pending
+1008	Hira Ali	Lahore	18750	Pending
+1012	Fatima Zahra	Faisalabad	8200	Pending
+1016	Bilal Riaz	Rawalpindi	9876	Pending
+1017	Waseem Akram	Faisalabad	8768	Shipped
+1020	Ahmad Raza	Multan	50600	Pending
+1021	Hassan Raza	Rawalpindi	45690	Shipped
+============================================================================
+Final Challenge — Sales Investigation
+
+Business manager asks:
+
+"Mujhe un customers ke orders chahiye jinke naam mein a ya A aata ho, jo Lahore, Islamabad ya Faisalabad se hain, aur jin ki order value 8,000 se 20,000 ke beech hai. Cancelled orders nahi chahiye. Highest-value order pehle show karo."
+
+Return:
+
+order_id
+customer_name
+city
+order_date
+total_amount
+status
+
+
+QUERY = SELECT 
+order_id, customer_name, city, total_amount, status, order_date
+FROM orders
+WHERE (customer_name LIKE '%a%'  OR customer_name LIKE '%A%') AND city IN ('Islamabad' , 'Faisalabad') AND (total_amount BETWEEN 8000 AND 20000) AND (status != 'Cancelled')
+ORDER BY total_amount DESC
+;
+RESULTS:
+1003	Hamza Ahmad	Faisalabad	15300	Delivered	2026-01-08
+1011	Ahmad Hassan	Islamabad	11500	Delivered	2026-01-28
+1007	Usman Tariq	Faisalabad	9800	Delivered	2026-01-18
+1017	Waseem Akram	Faisalabad	8768	Shipped	2026-03-18
+1012	Fatima Zahra	Faisalabad	8200	Pending	2026-02-01
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

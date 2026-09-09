@@ -1,0 +1,517 @@
+Task 1 — Basic Classification
+
+Create a column called order_category.
+
+Rules:
+
+total_amount	Category
+< 5000	Low
+5000–10000	Medium
+10001–20000	High
+> 20000	Premium
+
+Return:
+
+order_id
+customer_name
+total_amount
+order_category
+
+query = SELECT order_id, customer_name, total_amount,
+CASE
+    WHEN total_amount > 20000 THEN 'Premium'
+    WHEN total_amount BETWEEN 10001 AND 20000 THEN 'High'
+    WHEN total_amount BETWEEN 5000 AND 10000 THEN 'Medium'
+    ELSE 'Low'
+
+END  AS order_category
+FROM 
+orders;
+results:
+2001	Ali Raza	3200	Low
+2002	Sara Khan	5000	Medium
+2003	Hamza Ahmad	7800	Medium
+2004	Ayesha Malik	10000	Medium
+2005	Bilal Shah	12500	High
+2006	Zainab Noor	15000	High
+2007	Usman Tariq	15001	High
+2008	Hira Ali	17500	High
+2009	Saad Khan	20000	High
+2010	Maryam Iqbal	20001	Premium
+2011	Ahmad Hassan	22000	Premium
+2012	Fatima Zahra	25000	Premium
+2013	Hassan Ali	27500	Premium
+2014	Noor Fatima	4500	Low
+2015	Daniyal Aslam	6500	Medium
+2016	Bilal Riaz	8500	Medium
+2017	Waseem Akram	11000	High
+2018	Naeem Akram	13500	High
+2019	Azeem Akram	16500	High
+2020	Ahmad Raza	18500	High
+2021	Hassan Raza	20500	Premium
+2022	Ali Haidar	23500	Premium
+2023	Hamza Waseem	2800	Low
+2024	Sultan Waseem	9200	Medium
+2025	Imran Khan	14500	High
+2026	Usama Farooq	15500	High
+2027	Kashif Mehmood	19500	High
+2028	Rashid Ali	30000	Premium
+2029	Shoaib Ahmed	35000	Premium
+2030	Muneeb Hassan	60000	Premium
+
+=============================================================
+Task 2 — Customer Spending Level
+
+Create:
+
+spending_level
+
+Rules:
+
+< 8000 → Budget
+8000–15000 → Regular
+15001–25000 → Valuable
+> 25000 → VIP
+
+Return:
+
+customer_name
+total_amount
+spending_level
+
+query = SELECT customer_name, total_amount,
+CASE
+    WHEN total_amount > 25000 THEN 'VIP'
+    WHEN total_amount BETWEEN 15001 AND 25000 THEN 'Valuable'
+    WHEN total_amount BETWEEN 8000 AND 15000 THEN 'Regular'
+    WHEN total_amount < 8000 THEN 'Budget'
+    ELSE 'Low'
+
+END  AS spending_level
+FROM 
+orders;
+results:
+Ali Raza	3200	Budget
+Sara Khan	5000	Budget
+Hamza Ahmad	7800	Budget
+Ayesha Malik	10000	Regular
+Bilal Shah	12500	Regular
+Zainab Noor	15000	Regular
+Usman Tariq	15001	Valuable
+Hira Ali	17500	Valuable
+Saad Khan	20000	Valuable
+Maryam Iqbal	20001	Valuable
+Ahmad Hassan	22000	Valuable
+Fatima Zahra	25000	Valuable
+Hassan Ali	27500	VIP
+Noor Fatima	4500	Budget
+Daniyal Aslam	6500	Budget
+Bilal Riaz	8500	Regular
+Waseem Akram	11000	Regular
+Naeem Akram	13500	Regular
+Azeem Akram	16500	Valuable
+Ahmad Raza	18500	Valuable
+Hassan Raza	20500	Valuable
+Ali Haidar	23500	Valuable
+Hamza Waseem	2800	Budget
+Sultan Waseem	9200	Regular
+Imran Khan	14500	Regular
+Usama Farooq	15500	Valuable
+Kashif Mehmood	19500	Valuable
+Rashid Ali	30000	VIP
+Shoaib Ahmed	35000	VIP
+Muneeb Hassan	60000	VIP
+
+===========================================
+Task 3 — Order Status Priority
+
+Create:
+
+priority
+
+Rules:
+
+Pending → High
+Shipped → Medium
+Delivered → Low
+Cancelled → No Action
+
+Return:
+
+order_id
+customer_name
+status
+priority
+
+query = SELECT order_id, customer_name, 
+CASE
+    WHEN status = 'Pending' THEN 'High'
+    WHEN status = 'Shipped' THEN 'Medium'
+    WHEN status = 'Delivered' THEN 'Low'
+    WHEN status = 'Cancelled' THEN 'No Action'
+END AS priority
+
+FROM 
+orders
+RESULTS:
+2001	Ali Raza	High
+2002	Sara Khan	Medium
+2003	Hamza Ahmad	Low
+2004	Ayesha Malik	High
+2005	Bilal Shah	Medium
+2006	Zainab Noor	High
+2007	Usman Tariq	Low
+2008	Hira Ali	High
+2009	Saad Khan	Medium
+2010	Maryam Iqbal	Low
+2011	Ahmad Hassan	High
+2012	Fatima Zahra	Medium
+2013	Hassan Ali	Low
+2014	Noor Fatima	No Action
+2015	Daniyal Aslam	High
+2016	Bilal Riaz	Medium
+2017	Waseem Akram	Low
+2018	Naeem Akram	No Action
+2019	Azeem Akram	High
+2020	Ahmad Raza	Medium
+2021	Hassan Raza	Low
+2022	Ali Haidar	High
+2023	Hamza Waseem	Low
+2024	Sultan Waseem	No Action
+2025	Imran Khan	High
+2026	Usama Farooq	Medium
+2027	Kashif Mehmood	High
+2028	Rashid Ali	Low
+2029	Shoaib Ahmed	High
+2030	Muneeb Hassan	No Action
+===================================================
+Task 4 — High-Value Flag
+
+Create:
+
+is_high_value
+
+Rules:
+
+amount >= 15000 → YES
+otherwise → NO
+
+Return:
+
+order_id
+total_amount
+is_high_value
+query = SELECT order_id, total_amount, 
+CASE
+    WHEN total_amount >= 15000 THEN 'Yes'
+    ELSE 'No'
+    
+END AS is_hight_value
+
+FROM 
+orders
+RESULTS:
+2001	3200	No
+2002	5000	No
+2003	7800	No
+2004	10000	No
+2005	12500	No
+2006	15000	Yes
+2007	15001	Yes
+2008	17500	Yes
+2009	20000	Yes
+2010	20001	Yes
+2011	22000	Yes
+2012	25000	Yes
+2013	27500	Yes
+2014	4500	No
+2015	6500	No
+2016	8500	No
+2017	11000	No
+2018	13500	No
+2019	16500	Yes
+2020	18500	Yes
+2021	20500	Yes
+2022	23500	Yes
+2023	2800	No
+2024	9200	No
+2025	14500	No
+2026	15500	Yes
+2027	19500	Yes
+2028	30000	Yes
+2029	35000	Yes
+2030	60000	Yes
+==================================
+Task 5 — Combine CASE + WHERE
+
+Find only orders where:
+
+status is Pending OR Shipped
+amount > 7000
+
+Then create:
+
+order_size
+
+Rules:
+
+<= 10000 → Medium
+
+10000 → Large
+
+Sort by amount highest → lowest.
+QUERY = SELECT order_id, customer_name, total_amount, status,
+CASE 
+    WHEN total_amount > 10000 THEN 'Large'
+    ELSE 'Medium'
+END AS order_size
+FROM 
+orders
+WHERE (status = 'Pending' OR status = 'Shipped') AND total_amount > 7000
+ORDER BY total_amount DESC
+RESULTS :
+2029	Shoaib Ahmed	35000	Pending	Large
+2012	Fatima Zahra	25000	Shipped	Large
+2022	Ali Haidar	23500	Pending	Large
+2011	Ahmad Hassan	22000	Pending	Large
+2009	Saad Khan	20000	Shipped	Large
+2027	Kashif Mehmood	19500	Pending	Large
+2020	Ahmad Raza	18500	Shipped	Large
+2008	Hira Ali	17500	Pending	Large
+2019	Azeem Akram	16500	Pending	Large
+2026	Usama Farooq	15500	Shipped	Large
+2006	Zainab Noor	15000	Pending	Large
+2025	Imran Khan	14500	Pending	Large
+2005	Bilal Shah	12500	Shipped	Large
+2004	Ayesha Malik	10000	Pending	Medium
+2016	Bilal Riaz	8500	Shipped	Medium
+====================================================
+
+Task 6 — CASE + ORDER BY 🔥
+
+Create a priority classification:
+
+Pending  → 1
+Shipped  → 2
+Delivered → 3
+Cancelled → 4
+
+Then sort using this classification.
+
+Return:
+
+order_id
+customer_name
+status
+priority_number
+
+QUERY = SELECT order_id, customer_name,  status,
+CASE
+    WHEN status = 'Pending' THEN 1
+    WHEN status = 'Shipped' THEN 2
+    WHEN status = 'Delivered' THEN 3
+    WHEN status = 'Cancelled' THEN 4
+    
+END  AS priority_number
+FROM orders
+ORDER BY priority_number
+RESULTS:
+2029	Shoaib Ahmed	Pending	1
+2022	Ali Haidar	Pending	1
+2019	Azeem Akram	Pending	1
+2015	Daniyal Aslam	Pending	1
+2001	Ali Raza	Pending	1
+2006	Zainab Noor	Pending	1
+2027	Kashif Mehmood	Pending	1
+2008	Hira Ali	Pending	1
+2004	Ayesha Malik	Pending	1
+2025	Imran Khan	Pending	1
+2011	Ahmad Hassan	Pending	1
+2016	Bilal Riaz	Shipped	2
+2002	Sara Khan	Shipped	2
+2005	Bilal Shah	Shipped	2
+2009	Saad Khan	Shipped	2
+2012	Fatima Zahra	Shipped	2
+2020	Ahmad Raza	Shipped	2
+2026	Usama Farooq	Shipped	2
+2007	Usman Tariq	Delivered	3
+2028	Rashid Ali	Delivered	3
+2017	Waseem Akram	Delivered	3
+2013	Hassan Ali	Delivered	3
+2023	Hamza Waseem	Delivered	3
+2003	Hamza Ahmad	Delivered	3
+2010	Maryam Iqbal	Delivered	3
+2021	Hassan Raza	Delivered	3
+2018	Naeem Akram	Cancelled	4
+2024	Sultan Waseem	Cancelled	4
+2030	Muneeb Hassan	Cancelled	4
+2014	Noor Fatima	Cancelled	4
+================================================
+2029	Shoaib Ahmed	Pending	1
+2022	Ali Haidar	Pending	1
+2019	Azeem Akram	Pending	1
+2015	Daniyal Aslam	Pending	1
+2001	Ali Raza	Pending	1
+2006	Zainab Noor	Pending	1
+2027	Kashif Mehmood	Pending	1
+2008	Hira Ali	Pending	1
+2004	Ayesha Malik	Pending	1
+2025	Imran Khan	Pending	1
+2011	Ahmad Hassan	Pending	1
+2016	Bilal Riaz	Shipped	2
+2002	Sara Khan	Shipped	2
+2005	Bilal Shah	Shipped	2
+2009	Saad Khan	Shipped	2
+2012	Fatima Zahra	Shipped	2
+2020	Ahmad Raza	Shipped	2
+2026	Usama Farooq	Shipped	2
+2007	Usman Tariq	Delivered	3
+2028	Rashid Ali	Delivered	3
+2017	Waseem Akram	Delivered	3
+2013	Hassan Ali	Delivered	3
+2023	Hamza Waseem	Delivered	3
+2003	Hamza Ahmad	Delivered	3
+2010	Maryam Iqbal	Delivered	3
+2021	Hassan Raza	Delivered	3
+2018	Naeem Akram	Cancelled	4
+2024	Sultan Waseem	Cancelled	4
+2030	Muneeb Hassan	Cancelled	4
+2014	Noor Fatima	Cancelled	4
+
+query = SELECT order_id, customer_name,  status, total_amount,
+CASE
+    WHEN (status = 'Pending' AND total_amount > 15000) THEN 'Urgent'
+    WHEN (status = 'Pending' AND total_amount <=15000) THEN 'Follow-up'
+    WHEN (status = 'Shipped') THEN 'Trasit'
+    WHEN (status = 'Delivered') THEN 'Completed'
+    WHEN (status = 'Cancelled') THEN 'Closed'
+    
+END  AS business_action
+FROM orders
+
+results :
+2001	Ali Raza	Pending	3200	Follow-up
+2002	Sara Khan	Shipped	5000	Trasit
+2003	Hamza Ahmad	Delivered	7800	Completed
+2004	Ayesha Malik	Pending	10000	Follow-up
+2005	Bilal Shah	Shipped	12500	Trasit
+2006	Zainab Noor	Pending	15000	Follow-up
+2007	Usman Tariq	Delivered	15001	Completed
+2008	Hira Ali	Pending	17500	Urgent
+2009	Saad Khan	Shipped	20000	Trasit
+2010	Maryam Iqbal	Delivered	20001	Completed
+2011	Ahmad Hassan	Pending	22000	Urgent
+2012	Fatima Zahra	Shipped	25000	Trasit
+2013	Hassan Ali	Delivered	27500	Completed
+2014	Noor Fatima	Cancelled	4500	Closed
+2015	Daniyal Aslam	Pending	6500	Follow-up
+2016	Bilal Riaz	Shipped	8500	Trasit
+2017	Waseem Akram	Delivered	11000	Completed
+2018	Naeem Akram	Cancelled	13500	Closed
+2019	Azeem Akram	Pending	16500	Urgent
+2020	Ahmad Raza	Shipped	18500	Trasit
+2021	Hassan Raza	Delivered	20500	Completed
+2022	Ali Haidar	Pending	23500	Urgent
+2023	Hamza Waseem	Delivered	2800	Completed
+2024	Sultan Waseem	Cancelled	9200	Closed
+2025	Imran Khan	Pending	14500	Follow-up
+2026	Usama Farooq	Shipped	15500	Trasit
+2027	Kashif Mehmood	Pending	19500	Urgent
+2028	Rashid Ali	Delivered	30000	Completed
+2029	Shoaib Ahmed	Pending	35000	Urgent
+2030	Muneeb Hassan	Cancelled	60000	Closed
+
+==============================================================
+FINAL CHALLENGE
+
+Build an Order Intelligence Report.
+
+Return:
+
+order_id
+customer_name
+city
+total_amount
+status
+order_category
+priority
+business_action
+
+Your classification logic:
+
+Order Category
+< 5000       → Low
+5000–10000   → Medium
+10001–20000  → High
+> 20000      → Premium
+Priority
+Pending      → High
+Shipped      → Medium
+Delivered    → Low
+Cancelled    → No Action
+Business Action
+Pending + amount > 15000 → Urgent
+Pending                  → Follow-up
+Shipped                  → In Transit
+Delivered                → Completed
+Cancelled                → Closed
+
+Then:
+
+Sort Premium/High-value orders first.
+
+query = SELECT order_id, customer_name, city, total_amount, status,
+CASE
+    WHEN total_amount > 20000 THEN 'Premium'
+    WHEN total_amount BETWEEN 10001 AND 20000 THEN 'High'
+    WHEN total_amount BETWEEN 5000 AND 10000 THEN 'Medium'
+    WHEN total_amount < 5000 THEN 'Low'
+END AS order_category,
+
+CASE
+    WHEN status = 'Pending' THEN 'High'
+    WHEN status = 'Shipped' THEN 'Medium'
+    WHEN status = 'Delivered' THEN 'Low'
+    WHEN status = 'Cancelled' THEN 'No Action'
+END AS priority,
+
+CASE
+    WHEN status = 'Pending' AND total_amount > 15000 THEN 'Urgent'
+    WHEN status = 'Pending' THEN 'Follow-up'
+    WHEN status = 'Shipped' THEN 'Transit'
+    WHEN status = 'Delivered' THEN 'Completed'
+    WHEN status = 'Cancelled' THEN 'Closed'
+    END AS business_action
+FROM orders
+ORDER BY  total_amount DESC
+RESULTS:
+2030	Muneeb Hassan	Rawalpindi	60000	Cancelled	Premium	No Action	Closed
+2029	Shoaib Ahmed	Karachi	35000	Pending	Premium	High	Urgent
+2028	Rashid Ali	Lahore	30000	Delivered	Premium	Low	Completed
+2013	Hassan Ali	Lahore	27500	Delivered	Premium	Low	Completed
+2012	Fatima Zahra	Faisalabad	25000	Shipped	Premium	Medium	Transit
+2022	Ali Haidar	Karachi	23500	Pending	Premium	High	Urgent
+2011	Ahmad Hassan	Islamabad	22000	Pending	Premium	High	Urgent
+2021	Hassan Raza	Rawalpindi	20500	Delivered	Premium	Low	Completed
+2010	Maryam Iqbal	Karachi	20001	Delivered	Premium	Low	Completed
+2009	Saad Khan	Multan	20000	Shipped	High	Medium	Transit
+2027	Kashif Mehmood	Islamabad	19500	Pending	High	High	Urgent
+2020	Ahmad Raza	Multan	18500	Shipped	High	Medium	Transit
+2008	Hira Ali	Lahore	17500	Pending	High	High	Urgent
+2019	Azeem Akram	Islamabad	16500	Pending	High	High	Urgent
+2026	Usama Farooq	Faisalabad	15500	Shipped	High	Medium	Transit
+2007	Usman Tariq	Faisalabad	15001	Delivered	High	Low	Completed
+2006	Zainab Noor	Islamabad	15000	Pending	High	High	Follow-up
+2025	Imran Khan	Lahore	14500	Pending	High	High	Follow-up
+2018	Naeem Akram	Lahore	13500	Cancelled	High	No Action	Closed
+2005	Bilal Shah	Karachi	12500	Shipped	High	Medium	Transit
+2017	Waseem Akram	Faisalabad	11000	Delivered	High	Low	Completed
+2004	Ayesha Malik	Lahore	10000	Pending	Medium	High	Follow-up
+2024	Sultan Waseem	Karachi	9200	Cancelled	Medium	No Action	Closed
+2016	Bilal Riaz	Rawalpindi	8500	Shipped	Medium	Medium	Transit
+2003	Hamza Ahmad	Faisalabad	7800	Delivered	Medium	Low	Completed
+2015	Daniyal Aslam	Karachi	6500	Pending	Medium	High	Follow-up
+2002	Sara Khan	Islamabad	5000	Shipped	Medium	Medium	Transit
+2014	Noor Fatima	Multan	4500	Cancelled	Low	No Action	Closed
+2001	Ali Raza	Lahore	3200	Pending	Low	High	Follow-up
+2023	Hamza Waseem	Islamabad	2800	Delivered	Low	Low	Completed
