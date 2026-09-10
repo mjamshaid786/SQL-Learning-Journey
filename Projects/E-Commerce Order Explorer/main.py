@@ -1,6 +1,6 @@
 import streamlit as st
 from database import connect_database
-from create_table import table_creation
+# from create_table import table_creation
 from query import run_query
 from data_insertion import insert_data
 from create_new_table import table
@@ -17,11 +17,11 @@ else:
 
 
 # #------- Table Creation -------
-is_success, result = table_creation()
-if is_success == True:
-    st.sidebar.success(result)
-else:
-    st.sidebar.error(result)
+# is_success, result = table_creation()
+# if is_success == True:
+    # st.sidebar.success(result)
+# else:
+    # st.sidebar.error(result)
 
 
 #------- Query Runner  -------

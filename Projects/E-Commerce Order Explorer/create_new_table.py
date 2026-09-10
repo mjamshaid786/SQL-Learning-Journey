@@ -23,7 +23,7 @@ def table():
         
         col_name = c1.text_input(f"Name", key=f"name_{i}").strip()
         data_type = c2.selectbox(f"Type", ['INT', 'VARCHAR(50)', 'VARCHAR(100)', 'VARCHAR(255)', 'NUMERIC(10, 2)', 'TIMESTAMP', 'DATE'], key=f"type_{i}")
-        constraint = c3.multiselect(f"Constraint", ['NONE', 'NOT NULL', 'PRIMARY KEY', 'UNIQUE'], key=f"cons_{i}")
+        constraint = c3.selectbox(f"Constraint", ['NONE', 'NOT NULL', 'PRIMARY KEY', 'UNIQUE'], key=f"cons_{i}")
         
         if col_name:
             cons_val = "" if constraint == "NONE" else constraint
