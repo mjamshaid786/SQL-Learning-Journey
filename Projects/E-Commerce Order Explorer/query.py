@@ -2,6 +2,13 @@ from connection import get_connection
 import streamlit as st
 import pandas as pd
 from code_editor import code_editor
+import json
+# from streamlit_lottie import st_lottie
+
+def load_lottie_file(filepath: str):
+    with open(filepath, "r", encoding="utf-8") as f:
+        return json.load(f)
+
 def run_query():
     response = code_editor(
         code="", # initial text blank rakha hai
@@ -17,7 +24,10 @@ def run_query():
         user_query = response["text"].strip()
     elif isinstance(response, str):
         user_query = response.strip()
+
+    # Animation
     if st.button("Run", type="primary", icon=':material/play_arrow:'):
+        
         try:
             with get_connection() as conn:
                 with conn.cursor() as cur:

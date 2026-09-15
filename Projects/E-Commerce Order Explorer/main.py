@@ -1,12 +1,12 @@
 import streamlit as st
 from database import connect_database
 # from create_table import table_creation
-from query import run_query
+from query import run_query, load_lottie_file
 from data_insertion import insert_data
 from create_new_table import table
+from streamlit_lottie import st_lottie
 #------------ STREAMLIT INTERFACE -----------
 st.title("E-COMMERERCE ORDER EXPLORER")
-
 #------- Database connection -------
 is_connected, result = connect_database()
 st.sidebar.header("Menu")

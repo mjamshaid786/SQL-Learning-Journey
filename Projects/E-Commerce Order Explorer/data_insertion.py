@@ -14,7 +14,7 @@ def insert_data():
         #------------- ORDER STATUS ------------
         order_status = st.selectbox("Select Order Status", ['Pending', 'Shipped', 'Delivered', 'Cancelled'])
 
-        if st.button("INSERT"):
+        if st.button("INSERT", type="primary"):
             #------------- INPUT VALIDATIONS ------------
             customer_name = name.strip().title()
             city_name = c_name.strip().title()

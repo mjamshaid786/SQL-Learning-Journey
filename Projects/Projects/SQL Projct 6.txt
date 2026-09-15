@@ -1,0 +1,468 @@
+Task 1 — Basic INNER JOIN
+
+Show:
+
+customer_name
+city
+order_id
+order_date
+status
+
+Join customers with customer_orders.
+
+query = SELECT 
+	c.customer_name,
+	c.city,
+	co.order_id,
+	co.order_date,
+	co.status
+	
+FROM
+customers AS c
+INNER JOIN customer_orders AS co
+ON c.customer_id = co.customer_id;
+
+results:
+"Ali Raza"	"Lahore"	5001	"2026-03-01"	"Delivered"
+"Sara Khan"	"Islamabad"	5002	"2026-03-02"	"Pending"
+"Hamza Ahmad"	"Faisalabad"	5003	"2026-03-03"	"Delivered"
+"Ali Raza"	"Lahore"	5004	"2026-03-04"	"Shipped"
+"Bilal Shah"	"Karachi"	5005	"2026-03-05"	"Delivered"
+"Zainab Noor"	"Islamabad"	5006	"2026-03-06"	"Pending"
+"Usman Tariq"	"Faisalabad"	5007	"2026-03-07"	"Delivered"
+"Hira Ali"	"Lahore"	5008	"2026-03-08"	"Shipped"
+"Hamza Ahmad"	"Faisalabad"	5009	"2026-03-09"	"Delivered"
+"Saad Khan"	"Multan"	5010	"2026-03-10"	"Cancelled"
+"Sara Khan"	"Islamabad"	5011	"2026-03-11"	"Delivered"
+"Bilal Shah"	"Karachi"	5012	"2026-03-12"	"Pending"
+
+=======================================================================================================
+
+Task 2 — Customer + Product
+
+Show:
+
+customer_name
+product_name
+quantity
+status
+
+You will need to join three tables.
+
+query = SELECT 
+	c.customer_name,
+	p.product_name,
+	co.quantity,
+	co.status
+	
+FROM
+customers AS c
+INNER JOIN customer_orders AS co
+	ON c.customer_id = co.customer_id
+INNER JOIN products AS p
+	ON co.product_id = p.product_id;
+
+results:
+"Ali Raza"	"Laptop"	1	"Delivered"
+"Sara Khan"	"Mouse"	2	"Pending"
+"Hamza Ahmad"	"Office Chair"	1	"Delivered"
+"Ali Raza"	"Keyboard"	2	"Shipped"
+"Bilal Shah"	"Headphones"	1	"Delivered"
+"Zainab Noor"	"Desk"	1	"Pending"
+"Usman Tariq"	"Notebook"	5	"Delivered"
+"Hira Ali"	"Laptop"	1	"Shipped"
+"Hamza Ahmad"	"Headphones"	2	"Delivered"
+"Saad Khan"	"Office Chair"	1	"Cancelled"
+"Sara Khan"	"Notebook"	10	"Delivered"
+"Bilal Shah"	"Mouse"	3	"Pending"
+========================================================
+Task 3 — Order Details
+
+Create a report containing:
+
+order_id
+customer_name
+product_name
+category
+quantity
+order_date
+status
+
+Sort by newest order first.
+
+query = SELECT 
+	co.order_id,
+	c.customer_name,
+	p.product_name,
+	p.category,
+	co.quantity,
+	co.order_date,
+	co.status
+	
+FROM
+customers AS c
+INNER JOIN customer_orders AS co
+	ON c.customer_id = co.customer_id
+INNER JOIN products AS p
+	ON co.product_id = p.product_id
+ORDER BY co.order_date DESC
+	;
+
+results:
+5012	"Bilal Shah"	"Mouse"	"Electronics"	3	"2026-03-12"	"Pending"
+5011	"Sara Khan"	"Notebook"	"Stationery"	10	"2026-03-11"	"Delivered"
+5010	"Saad Khan"	"Office Chair"	"Furniture"	1	"2026-03-10"	"Cancelled"
+5009	"Hamza Ahmad"	"Headphones"	"Electronics"	2	"2026-03-09"	"Delivered"
+5008	"Hira Ali"	"Laptop"	"Electronics"	1	"2026-03-08"	"Shipped"
+5007	"Usman Tariq"	"Notebook"	"Stationery"	5	"2026-03-07"	"Delivered"
+5006	"Zainab Noor"	"Desk"	"Furniture"	1	"2026-03-06"	"Pending"
+5005	"Bilal Shah"	"Headphones"	"Electronics"	1	"2026-03-05"	"Delivered"
+5004	"Ali Raza"	"Keyboard"	"Electronics"	2	"2026-03-04"	"Shipped"
+5003	"Hamza Ahmad"	"Office Chair"	"Furniture"	1	"2026-03-03"	"Delivered"
+5002	"Sara Khan"	"Mouse"	"Electronics"	2	"2026-03-02"	"Pending"
+5001	"Ali Raza"	"Laptop"	"Electronics"	1	"2026-03-01"	"Delivered"
+=============================================================================================
+Task 4 — Calculate Order Value 💰
+
+For each order calculate:
+
+quantity × product price
+
+Return:
+
+order_id
+customer_name
+product_name
+quantity
+price
+order_value
+
+Don't modify the database. Calculate it directly in your query.
+
+query = SELECT 
+	co.order_id,
+	c.customer_name,
+	p.product_name,
+	p.category,
+	co.quantity,
+	p.price,
+	co.quantity * p.price AS order_value
+FROM
+customers AS c
+INNER JOIN customer_orders AS co
+	ON c.customer_id = co.customer_id
+INNER JOIN products AS p
+	ON co.product_id = p.product_id;
+
+results:
+5001	"Ali Raza"	"Laptop"	"Electronics"	1	120000.00	120000.00
+5002	"Sara Khan"	"Mouse"	"Electronics"	2	2500.00	5000.00
+5003	"Hamza Ahmad"	"Office Chair"	"Furniture"	1	25000.00	25000.00
+5004	"Ali Raza"	"Keyboard"	"Electronics"	2	4500.00	9000.00
+5005	"Bilal Shah"	"Headphones"	"Electronics"	1	8000.00	8000.00
+5006	"Zainab Noor"	"Desk"	"Furniture"	1	35000.00	35000.00
+5007	"Usman Tariq"	"Notebook"	"Stationery"	5	500.00	2500.00
+5008	"Hira Ali"	"Laptop"	"Electronics"	1	120000.00	120000.00
+5009	"Hamza Ahmad"	"Headphones"	"Electronics"	2	8000.00	16000.00
+5010	"Saad Khan"	"Office Chair"	"Furniture"	1	25000.00	25000.00
+5011	"Sara Khan"	"Notebook"	"Stationery"	10	500.00	5000.00
+5012	"Bilal Shah"	"Mouse"	"Electronics"	3	2500.00	7500.00
+
+================================================================================================
+
+Task 5 — Delivered Orders
+
+Show customer and product information for Delivered orders only.
+
+Return:
+
+order_id
+customer_name
+product_name
+quantity
+order_value
+
+Sort highest order value first.
+
+query = SELECT 
+	co.order_id,
+	c.customer_name,
+	p.product_name,
+	p.category,
+	co.quantity,
+	co.order_date,
+	co.status,
+	co.quantity * p.price AS order_value
+	
+FROM
+customers AS c
+INNER JOIN customer_orders AS co
+	ON c.customer_id = co.customer_id
+INNER JOIN products AS p
+	ON co.product_id = p.product_id
+WHERE co.status = 'Delivered'
+ORDER BY (co.quantity * p.price) DESC
+	;
+
+results:
+5001	"Ali Raza"	"Laptop"	"Electronics"	1	"2026-03-01"	"Delivered"	120000.00
+5003	"Hamza Ahmad"	"Office Chair"	"Furniture"	1	"2026-03-03"	"Delivered"	25000.00
+5009	"Hamza Ahmad"	"Headphones"	"Electronics"	2	"2026-03-09"	"Delivered"	16000.00
+5005	"Bilal Shah"	"Headphones"	"Electronics"	1	"2026-03-05"	"Delivered"	8000.00
+5011	"Sara Khan"	"Notebook"	"Stationery"	10	"2026-03-11"	"Delivered"	5000.00
+5007	"Usman Tariq"	"Notebook"	"Stationery"	5	"2026-03-07"	"Delivered"	2500.00
+=============================================================================================================
+Task 6 — LEFT JOIN
+
+Now the important part.
+
+Show ALL customers, including customers who have never placed an order.
+
+Return:
+
+customer_id
+customer_name
+city
+order_id
+order_date
+status
+
+query = SELECT 
+	c.customer_id,
+	c.customer_name,
+	c.city,
+	co.order_id,
+	co.order_date,
+	co.status
+FROM
+customers AS c
+LEFT JOIN customer_orders AS co
+ON c.customer_id = co.customer_id
+
+results:
+1	"Ali Raza"	"Lahore"	5001	"2026-03-01"	"Delivered"
+2	"Sara Khan"	"Islamabad"	5002	"2026-03-02"	"Pending"
+3	"Hamza Ahmad"	"Faisalabad"	5003	"2026-03-03"	"Delivered"
+1	"Ali Raza"	"Lahore"	5004	"2026-03-04"	"Shipped"
+5	"Bilal Shah"	"Karachi"	5005	"2026-03-05"	"Delivered"
+6	"Zainab Noor"	"Islamabad"	5006	"2026-03-06"	"Pending"
+7	"Usman Tariq"	"Faisalabad"	5007	"2026-03-07"	"Delivered"
+8	"Hira Ali"	"Lahore"	5008	"2026-03-08"	"Shipped"
+3	"Hamza Ahmad"	"Faisalabad"	5009	"2026-03-09"	"Delivered"
+9	"Saad Khan"	"Multan"	5010	"2026-03-10"	"Cancelled"
+2	"Sara Khan"	"Islamabad"	5011	"2026-03-11"	"Delivered"
+5	"Bilal Shah"	"Karachi"	5012	"2026-03-12"	"Pending"
+10	"Maryam Iqbal"	"Karachi"			
+4	"Ayesha Malik"	"Lahore"			
+
+==============================================================================
+Task 7 — Find Customers With No Orders
+
+Using a LEFT JOIN, identify customers who have never placed an order.
+
+Return:
+
+customer_id
+customer_name
+city
+
+QUERY = SELECT 
+	c.customer_id,
+	c.customer_name,
+	c.city
+FROM
+customers AS c
+LEFT JOIN customer_orders AS co
+ON c.customer_id = co.customer_id
+WHERE co.customer_id IS NULL
+
+RESULTS:
+10	"Maryam Iqbal"	"Karachi"
+4	"Ayesha Malik"	"Lahore"
+
+==============================================
+Use a RIGHT JOIN between customer_orders and products.
+
+Your goal:
+
+Show every product, including products that have never been ordered.
+
+Return:
+
+product_id
+product_name
+category
+order_id
+quantity
+
+QUERY = SELECT
+	p.product_id,
+	p.product_name,
+	p.category,
+	co.order_id,
+	co.quantity
+FROM customer_orders AS co
+RIGHT JOIN products AS p
+	ON co.product_id = p.product_id
+
+
+results:
+101	"Laptop"	"Electronics"	5001	1
+102	"Mouse"	"Electronics"	5002	2
+104	"Office Chair"	"Furniture"	5003	1
+103	"Keyboard"	"Electronics"	5004	2
+106	"Headphones"	"Electronics"	5005	1
+105	"Desk"	"Furniture"	5006	1
+107	"Notebook"	"Stationery"	5007	5
+101	"Laptop"	"Electronics"	5008	1
+106	"Headphones"	"Electronics"	5009	2
+104	"Office Chair"	"Furniture"	5010	1
+107	"Notebook"	"Stationery"	5011	10
+102	"Mouse"	"Electronics"	5012	3
+============================================================
+Task 9 — FULL JOIN
+
+Perform a FULL JOIN between customers and orders.
+
+Return:
+
+customer_id
+customer_name
+order_id
+status
+
+query = SELECT 
+	c.customer_name,
+	c.customer_id,
+	co.order_id,
+	co.status
+FROM customers AS c
+FULL JOIN customer_orders AS co
+		ON 	c.customer_id = co.customer_id
+
+results:
+"Ali Raza"	1	5001	"Delivered"
+"Sara Khan"	2	5002	"Pending"
+"Hamza Ahmad"	3	5003	"Delivered"
+"Ali Raza"	1	5004	"Shipped"
+"Bilal Shah"	5	5005	"Delivered"
+"Zainab Noor"	6	5006	"Pending"
+"Usman Tariq"	7	5007	"Delivered"
+"Hira Ali"	8	5008	"Shipped"
+"Hamza Ahmad"	3	5009	"Delivered"
+"Saad Khan"	9	5010	"Cancelled"
+"Sara Khan"	2	5011	"Delivered"
+"Bilal Shah"	5	5012	"Pending"
+"Maryam Iqbal"	10		
+"Ayesha Malik"	4		
+
+============================================================
+Task 10 — JOIN Verification
+
+This is a Data Engineering mindset task, not just SQL syntax.
+
+Answer these questions after running your queries:
+
+A.
+
+How many customers are in the customers table?
+Answer: 10
+
+B.
+
+How many orders are in customer_orders?
+Answer: 12
+
+C.
+
+How many products are in products?
+Answer: 7
+
+D.
+
+Which customer has no orders?
+Answer:
+"Maryam Iqbal"
+"Ayesha Malik"
+
+E.
+
+Which product has no orders?
+Answer: EMPTY Because all products got ordered
+
+F.
+
+Does the number of rows from your INNER JOIN equal the number of orders?
+
+If not, investigate why.
+Answer:this question not clear, because you did not specify which inner join, either product and orders or customer and orders.
+
+================================================================================================================================
+Final Challenge — E-commerce Order Report
+
+Build one professional report containing:
+
+Column
+order_id
+customer_name
+customer_city
+product_name
+category
+quantity
+price
+order_value
+order_date
+status
+
+Requirements:
+
+✅ Use multiple JOINs
+✅ Calculate order_value
+✅ Include only orders with quantity ≥ 2
+✅ Exclude Cancelled orders
+✅ Sort by order_value DESC
+
+⭐ Bonus
+
+Add a classification:
+
+order_value < 5000       → Small
+5000–20000               → Medium
+20001–50000              → Large
+>50000                   → Premium
+
+QUERY = SELECT 
+	co.order_id,
+	c.customer_name,
+	c.city,
+	p.product_name,
+	p.category,
+	co.quantity,
+	p.price,
+	co.quantity * p.price AS order_value,
+	co.order_date,
+	co.status,
+CASE
+	WHEN (co.quantity * p.price) > 50000 THEN 'Premium'
+	WHEN (co.quantity * p.price) BETWEEN 21002 AND 50000 THEN 'Large'
+	WHEN (co.quantity * p.price) BETWEEN 5000 AND 20000 THEN 'Medium'
+	WHEN (co.quantity * p.price) < 5000 THEN 'Small'
+END AS classification	
+FROM customers AS c
+INNER JOIN customer_orders AS co
+	ON c.customer_id = co.customer_id
+INNER JOIN products AS p
+	ON co.product_id = p.product_id	
+
+WHERE (co.quantity >= 2) AND (co.status != 'Cancelled') 
+ORDER BY (co.quantity * p.price) DESC
+
+results :
+5009	"Hamza Ahmad"	"Faisalabad"	"Headphones"	"Electronics"	2	8000.00	16000.00	"2026-03-09"	"Delivered"	"Medium"
+5004	"Ali Raza"	"Lahore"	"Keyboard"	"Electronics"	2	4500.00	9000.00	"2026-03-04"	"Shipped"	"Medium"
+5012	"Bilal Shah"	"Karachi"	"Mouse"	"Electronics"	3	2500.00	7500.00	"2026-03-12"	"Pending"	"Medium"
+5002	"Sara Khan"	"Islamabad"	"Mouse"	"Electronics"	2	2500.00	5000.00	"2026-03-02"	"Pending"	"Medium"
+5011	"Sara Khan"	"Islamabad"	"Notebook"	"Stationery"	10	500.00	5000.00	"2026-03-11"	"Delivered"	"Medium"
+5007	"Usman Tariq"	"Faisalabad"	"Notebook"	"Stationery"	5	500.00	2500.00	"2026-03-07"	"Delivered"	"Small"
+
+

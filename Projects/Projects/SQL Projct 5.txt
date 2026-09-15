@@ -1,0 +1,387 @@
+Task 1 — Total Number of Orders
+
+Company ke paas total kitne orders hain?
+
+Return:
+
+total_orders
+query = SELECT 
+    COUNT(order_id) AS total_orders
+FROM orders;
+results:
+30
+=====================================================
+Task 2 — Total Sales
+
+All orders ka total total_amount calculate karein.
+
+Return:
+
+total_sales
+
+QUERY = SELECT
+    SUM(total_amount) AS total_sales
+FROM orders
+y;
+
+RESULTS:
+510002
+
+==========================================================
+Task 3 — Average Order Value
+
+Average order amount find karein.
+
+Return:
+
+average_order_value
+
+QUERY = SELECT
+    AVG(total_amount) AS average_order_value
+FROM orders
+;
+
+results:
+17000.066666666666
+====================================================
+
+Task 4 — Cheapest & Most Expensive Order
+
+Find:
+
+minimum order amount
+maximum order amount
+
+Return:
+
+minimum_order
+maximum_order
+
+query = SELECT
+    MAX(total_amount) AS maximum_order,
+    MIN(total_amount) AS minimum_order
+FROM orders
+;
+
+results :
+60000	2800
+
+======================================================
+Task 5 — Orders Per City
+
+Har city mein kitne orders hain?
+
+Example structure:
+
+city          order_count
+-------------------------
+Lahore        ?
+Karachi       ?
+Islamabad     ?
+...
+
+
+query = SELECT
+    city,
+    COUNT(*) AS order_count
+FROM orders
+GROUP BY city
+;
+
+results :
+Faisalabad	5
+Lahore	7
+Multan	3
+Rawalpindi	3
+Islamabad	6
+Karachi	6
+
+============================================
+Task 6 — Total Sales Per City
+
+Har city ki total sales calculate karein.
+
+Return:
+
+city
+total_sales
+
+Then highest sales wali city ko top par rakhein.
+
+query = SELECT
+    city,
+    SUM(total_amount) AS total_sales
+FROM orders
+GROUP BY city
+ORDER BY total_sales DESC
+;
+
+RESULTS :
+Lahore	116200
+Karachi	106701
+Rawalpindi	89000
+Islamabad	80800
+Faisalabad	74301
+Multan	43000
+
+=======================================================
+Task 7 — Average Order Value Per City
+
+Har city ka average order amount.
+
+Return:
+
+city
+average_order_value
+
+Highest average first.
+
+QUERY = SELECT
+    city,
+    AVG(total_amount) AS average_order_value
+FROM orders
+GROUP BY city
+ORDER BY average_order_value DESC
+;
+
+results:
+Rawalpindi	29666.666666666668
+Karachi	17783.5
+Lahore	16600
+Faisalabad	14860.2
+Multan	14333.333333333332
+Islamabad	13466.666666666668
+
+=================================================
+Task 8 — Minimum & Maximum Order Per City
+
+Har city ke liye calculate karein:
+
+city
+minimum_order
+maximum_order
+
+query = SELECT
+    city,
+    MAX(total_amount) AS maximum_order,
+    MIN(total_amount) AS minimum_order
+FROM orders
+GROUP BY city
+;
+
+results:
+Faisalabad	25000	7800
+Lahore	30000	3200
+Multan	20000	4500
+Rawalpindi	60000	8500
+Islamabad	22000	2800
+Karachi	35000	6500
+
+=================================================
+Task 9 — Orders By Status
+
+Find how many orders belong to each status:
+
+Pending
+Shipped
+Delivered
+Cancelled
+
+Return:
+
+status
+order_count
+
+Highest count first.
+
+query = SELECT
+    status,
+    COUNT(*) AS order_count
+FROM orders
+GROUP BY status
+ORDER BY order_count DESC
+;
+
+RESULTS:
+Pending	11
+Delivered	8
+Shipped	7
+Cancelled	4
+
+==============================================
+Task 10 — Sales By Status
+
+Har status ki total sales calculate karein.
+
+Return:
+
+status
+total_sales
+
+Sort highest sales first.
+
+query = SELECT
+    status,
+    SUM(total_amount) AS total_sales
+FROM orders
+GROUP BY status
+ORDER BY total_sales DESC
+;
+
+results:
+Pending	183200
+Delivered	134602
+Shipped	105000
+Cancelled	87200
+
+================================================
+Task 11 — Cities With More Than 5 Orders
+
+Sirf woh cities show karein jahan:
+
+order count > 5
+
+Return:
+
+city
+order_count
+
+query = SELECT
+    city,
+    COUNT(*) AS order_count
+FROM orders
+GROUP BY city
+HAVING COUNT(*) > 5
+;
+
+RESULTS :
+Lahore	7
+Islamabad	6
+Karachi	6
+
+==================================
+Task 12 — Cities With High Total Sales
+
+Sirf woh cities show karein jinki total sales:
+
+> 50,000
+
+Return:
+
+city
+total_sales
+
+QUERY = SELECT
+    city,
+    SUM(total_amount) AS total_sales
+FROM orders
+GROUP BY city
+HAVING SUM(total_amount) > 50000
+;
+
+RESULTS:
+Faisalabad	74301
+Lahore	116200
+Rawalpindi	89000
+Islamabad	80800
+Karachi	106701
+
+===========================================
+ Task 13 — Business Analytics
+
+Management wants to know which cities are performing strongly.
+
+For every city calculate:
+
+city
+order_count
+total_sales
+average_order_value
+minimum_order
+maximum_order
+
+Then sort by:
+
+total_sales DESC
+
+query = SELECT
+    city,
+    COUNT(*) AS order_count,
+    SUM(total_amount) AS total_sales,
+    AVG(total_amount) AS average_order_value,
+    MAX(total_amount) AS maximum_order,
+    MIN(total_amount) AS minimum_order
+    FROM orders
+GROUP BY city
+ORDER BY total_sales DESC
+
+;
+
+
+results: 
+Lahore	7	116200	16600	30000	3200
+Karachi	6	106701	17783.5	35000	6500
+Rawalpindi	3	89000	29666.666666666668	60000	8500
+Islamabad	6	80800	13466.666666666668	22000	2800
+Faisalabad	5	74301	14860.2	25000	7800
+Multan	3	43000	14333.333333333332	20000	4500
+
+=============================================================================
+
+FINAL CHALLENGE — Sales Performance Report
+
+Ab ek professional business report banao.
+
+For every city return:
+
+city
+order_count
+total_sales
+average_order_value
+minimum_order
+maximum_order
+
+Then create one additional column:
+
+performance
+
+Rules:
+
+total_sales > 100000
+        → Excellent
+
+total_sales BETWEEN 50000 AND 100000
+        → Good
+
+total_sales < 50000
+        → Needs Improvement
+
+Then:
+
+Highest total sales first.
+
+query = SELECT
+    city,
+    COUNT(*) AS order_count,
+    SUM(total_amount) AS total_sales,
+    AVG(total_amount) AS average_order_value,
+    MAX(total_amount) AS maximum_order,
+    MIN(total_amount) AS minimum_order,
+CASE
+    WHEN SUM(total_amount) > 100000 THEN 'Excellent'
+    WHEN SUM(total_amount) BETWEEN 50000 AND 100000 THEN 'Good'
+    WHEN SUM(total_amount) < 50000 THEN 'Needs Improvement'
+END AS performance
+    FROM orders
+GROUP BY city
+ORDER BY total_sales DESC
+
+;
+
+results:
+Lahore	7	116200	16600	30000	3200	Excellent
+Karachi	6	106701	17783.5	35000	6500	Excellent
+Rawalpindi	3	89000	29666.666666666668	60000	8500	Good
+Islamabad	6	80800	13466.666666666668	22000	2800	Good
+Faisalabad	5	74301	14860.2	25000	7800	Good
+Multan	3	43000	14333.333333333332	20000	4500	Needs Improvement

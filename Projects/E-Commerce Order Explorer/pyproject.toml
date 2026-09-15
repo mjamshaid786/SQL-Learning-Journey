@@ -9,4 +9,5 @@ dependencies = [
     "psycopg2>=2.9.12",
     "streamlit>=1.63.0",
     "streamlit-code-editor>=0.1.22",
+    "streamlit-lottie>=0.0.5",
 ]

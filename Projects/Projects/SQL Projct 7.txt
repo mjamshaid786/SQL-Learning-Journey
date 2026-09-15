@@ -1,0 +1,203 @@
+Task 1 — Number All Orders
+Create a query that returns:
+order_id
+customer_id
+order_date
+row_number
+Requirements:
+newest order = 1
+oldest order gets the highest number
+Your job
+Use:
+ROW_NUMBER()
+OVER()
+ORDER BY
+-------------------------------------------------------
+QUERY:
+SELECT 
+	order_id,
+	customer_id,
+	order_date,
+ROW_NUMBER() OVER( ORDER BY order_date DESC)
+FROM customer_orders;
+
+RESULTS: 
+5012	5	"2026-03-12"	1
+5011	2	"2026-03-11"	2
+5010	9	"2026-03-10"	3
+5009	3	"2026-03-09"	4
+5008	8	"2026-03-08"	5
+5007	7	"2026-03-07"	6
+5006	6	"2026-03-06"	7
+5005	5	"2026-03-05"	8
+5004	1	"2026-03-04"	9
+5003	3	"2026-03-03"	10
+5002	2	"2026-03-02"	11
+5001	1	"2026-03-01"	12
+====================================================
+Task 2 — Latest Order Per Customer
+Ab requirement change:
+Har customer ka latest order identify karo.
+Expected output:
+customer_name
+order_id
+order_date
+row_number
+--------------------------------------------------------
+QUERY: 
+SELECT 
+	c.customer_name,
+	co.order_id,
+	co.order_date,
+ROW_NUMBER() OVER(PARTITION BY order_id ORDER BY order_date )
+FROM customers AS c
+INNER JOIN customer_orders AS co
+ON c.customer_id = co.customer_id;
+
+RESULTS:
+"Ali Raza"	5001	"2026-03-01"	1
+"Sara Khan"	5002	"2026-03-02"	1
+"Hamza Ahmad"	5003	"2026-03-03"	1
+"Ali Raza"	5004	"2026-03-04"	1
+"Bilal Shah"	5005	"2026-03-05"	1
+"Zainab Noor"	5006	"2026-03-06"	1
+"Usman Tariq"	5007	"2026-03-07"	1
+"Hira Ali"	5008	"2026-03-08"	1
+"Hamza Ahmad"	5009	"2026-03-09"	1
+"Saad Khan"	5010	"2026-03-10"	1
+"Sara Khan"	5011	"2026-03-11"	1
+"Bilal Shah"	5012	"2026-03-12"	1
+===================================================================
+Task 3 — Latest Order Only
+Sirf har customer ka latest order show karo.
+Expected:
+customer_name
+order_id
+order_date
+Data Engineering thinking
+Yeh pattern real-world pipelines mein bohat common hai:
+"Latest record per entity"
+For example:
+latest customer record
+latest transaction
+latest API record
+latest status
+latest event
+--------------------------------------------------------------------
+QUERY:
+SELECT 
+* 
+FROM
+	(SELECT 
+		c.customer_name,
+		co.order_id,
+		co.order_date,
+	ROW_NUMBER() OVER(PARTITION BY c.customer_id ORDER BY co.order_date )
+	FROM customers AS c
+	INNER JOIN customer_orders AS co
+	ON c.customer_id = co.customer_id)  AS t 
+WHERE row_number = 1;
+
+RESULTS:
+"Ali Raza"	5001	"2026-03-01"	1
+"Sara Khan"	5002	"2026-03-02"	1
+"Hamza Ahmad"	5003	"2026-03-03"	1
+"Bilal Shah"	5005	"2026-03-05"	1
+"Zainab Noor"	5006	"2026-03-06"	1
+"Usman Tariq"	5007	"2026-03-07"	1
+"Hira Ali"	5008	"2026-03-08"	1
+"Saad Khan"	5010	"2026-03-10"	1
+=============================================================================
+Task 4 — Rank Orders by Value
+Product price ko join karke:
+order_value = quantity × price
+calculate karo.
+Then:
+Highest-value order ko rank #1 do.
+Output:
+order_id
+customer_name
+order_value
+rank
+Use:
+RANK()
+------------------------------------------------------------------------------
+QUERY:
+SELECT 
+	co.order_id,
+	c.customer_name,
+	(p.price * co.quantity) AS order_value,
+RANK() OVER (ORDER BY (p.price * co.quantity) DESC)
+FROM customers AS c
+INNER JOIN customer_orders AS co
+ON c.customer_id = co.customer_id
+INNER JOIN products AS p
+ON p.product_id = co.product_id;
+
+RESULTS:
+5001	"Ali Raza"	120000.00	1
+5008	"Hira Ali"	120000.00	1
+5006	"Zainab Noor"	35000.00	3
+5003	"Hamza Ahmad"	25000.00	4
+5010	"Saad Khan"	25000.00	4
+5009	"Hamza Ahmad"	16000.00	6
+5004	"Ali Raza"	9000.00	7
+5005	"Bilal Shah"	8000.00	8
+5012	"Bilal Shah"	7500.00	9
+5011	"Sara Khan"	5000.00	10
+5002	"Sara Khan"	5000.00	10
+5007	"Usman Tariq"	2500.00	12
+==============================================================================
+Task 5 — Rank Customers Within Their City 
+Customer spending calculate karo.
+Then:
+Har city ke andar customers ko total spending ke according rank karo.
+Example:
+Lahore
+Ali       150000 → 1
+Ayesha     90000 → 2
+Hira       50000 → 3
+But Islamabad ka ranking phir se 1 se start hona chahiye.
+Yahan tumhein combine karna hoga:
+PARTITION BY city
+ORDER BY total_spending DESC
+--------------------------------------------------------------------------------
+QUERY:
+SELECT 
+    city,
+    customer_name,
+    total_spending,
+    DENSE_RANK() OVER(
+        PARTITION BY city 
+        ORDER BY total_spending DESC
+    ) AS city_rank
+FROM (
+    SELECT 
+        c.customer_id,
+        c.customer_name,
+        c.city,
+        SUM(p.price * co.quantity) AS total_spending
+    FROM customers AS c
+    INNER JOIN customer_orders AS co
+        ON c.customer_id = co.customer_id
+    INNER JOIN products AS p
+        ON p.product_id = co.product_id
+    GROUP BY 
+        c.customer_id,
+        c.customer_name,
+        c.city
+) AS customer_spending
+ORDER BY 
+SUM(total_spending) OVER(PARTITION BY city) DESC,
+    city_rank ASC;
+	
+RESULTS:
+"Lahore"	"Ali Raza"	129000.00	1
+"Lahore"	"Hira Ali"	120000.00	2
+"Islamabad"	"Zainab Noor"	35000.00	1
+"Islamabad"	"Sara Khan"	10000.00	2
+"Faisalabad"	"Hamza Ahmad"	41000.00	1
+"Faisalabad"	"Usman Tariq"	2500.00	2
+"Multan"	"Saad Khan"	25000.00	1
+"Karachi"	"Bilal Shah"	15500.00	1
+================================================================================
