@@ -1,0 +1,209 @@
+Task 1 & 2 Combined.
+
+Pehle driver-level delivery summary nikalo:
+
+driver_id
+driver_name
+total_deliveries
+total_revenue
+average_delivery_days
+
+Yahan tumhein:
+
+JOIN
+GROUP BY
+COUNT
+SUM
+AVG
+------------------------------------------------------------------------------
+QUERY = 
+SELECT
+* 
+FROM
+	(SELECT 
+			dr.driver_id,
+			dr.driver_name,
+			dr.city,
+			COUNT (dl.delivery_id) AS total_deliveries,
+			SUM(dl.delivery_fee)  AS total_revenue,
+			ROUND(AVG(dl.delivery_days), 2) AS average_delivery_days
+	FROM drivers AS dr
+	INNER JOIN deliveries AS dl
+	ON dr.driver_id = dl.driver_id
+	GROUP BY 
+	dr.driver_id,
+	dr.driver_name,
+	dr.city) AS inner_query
+WHERE 
+	total_deliveries > 2
+;
+
+RESULTS:
+3	"Hamza Ahmad"	"Faisalabad"	3	4050.00	3.00
+5	"Bilal Shah"	"Karachi"	3	6300.00	3.67
+2	"Sara Khan"	"Islamabad"	3	5300.00	2.33
+1	"Ali Raza"	"Lahore"	3	4600.00	2.00
+==============================================================================
+Task 3
+
+Create a CTE called something meaningful like:
+
+driver_summary
+
+It should contain:
+
+driver_id
+driver_name
+city
+total_deliveries
+total_revenue
+average_delivery_days
+
+Then outer query se:
+
+drivers with total_revenue > 4000
+------------------------------------------------------------------------------
+QUERY:
+WITH driver_summary AS
+	(SELECT 
+		driver_id,
+		COUNT(*) AS total_deliveries,
+		SUM(delivery_fee) AS total_revenue,
+		ROUND(AVG(delivery_days), 2) AS average_delivery_days
+	FROM deliveries
+	GROUP BY driver_id
+	)
+	
+SELECT
+dr.driver_id,
+dr.driver_name,
+dr.city,
+ds.total_deliveries,
+ds.total_revenue,
+ds.average_delivery_days
+FROM drivers AS dr
+LEFT JOIN driver_summary AS ds
+ON ds.driver_id = dr.driver_id
+WHERE ds.total_revenue > 4000
+;
+
+RESULTS:
+1	"Ali Raza"	"Lahore"	3	4600.00	2.00
+2	"Sara Khan"	"Islamabad"	3	5300.00	2.33
+3	"Hamza Ahmad"	"Faisalabad"	3	4050.00	3.00
+4	"Ayesha Malik"	"Lahore"	2	4900.00	4.50
+5	"Bilal Shah"	"Karachi"	3	6300.00	3.67
+===================================================================================
+Task 4
+Create:
+driver_summary
+        ↓
+driver_performance
+First CTE:
+total deliveries
+total revenue
+average delivery days
+Second CTE:
+performance classification
+Business rules:
+average_delivery_days <= 2
+        → Fast
+3–4 days
+        → Normal
+> 4 days
+        → Slow
+Final output:
+driver_name
+city
+total_deliveries
+total_revenue
+average_delivery_days
+performance
+-------------------------------------------------------------------------------------
+QUERY:
+WITH driver_summary AS
+	(SELECT 
+		driver_id,
+		COUNT(*) AS total_deliveries,
+		SUM(delivery_fee) AS total_revenue,
+		ROUND(AVG(delivery_days), 2) AS average_delivery_days
+	FROM deliveries
+	GROUP BY driver_id
+	), driver_performance AS
+	(
+	 SELECT 
+	 		driver_id,
+			ROUND(AVG(delivery_days), 2) AS average_delivery_days,
+	 CASE
+		WHEN AVG(delivery_days) <= 2 THEN 'Fast'
+		WHEN AVG(delivery_days) <=4 THEN 'Normal'
+		ELSE 'Slow'
+	 END AS performance
+	 FROM deliveries
+	 GROUP BY driver_id
+	 
+	)
+	
+SELECT
+dr.driver_id,
+dr.driver_name,
+dr.city,
+ds.total_deliveries,
+ds.total_revenue,
+ds.average_delivery_days,
+df.performance
+FROM drivers AS dr
+LEFT JOIN driver_summary AS ds
+ON ds.driver_id = dr.driver_id
+LEFT JOIN driver_performance AS df
+ON df.driver_id = dr.driver_id
+-- WHERE ds.total_revenue > 4000
+;
+
+RESULTS:
+1	"Ali Raza"	"Lahore"	3	4600.00	2.00	"Fast"
+2	"Sara Khan"	"Islamabad"	3	5300.00	2.33	"Normal"
+3	"Hamza Ahmad"	"Faisalabad"	3	4050.00	3.00	"Normal"
+4	"Ayesha Malik"	"Lahore"	2	4900.00	4.50	"Slow"
+5	"Bilal Shah"	"Karachi"	3	6300.00	3.67	"Normal"
+6	"Zainab Noor"	"Islamabad"	2	3600.00	3.50	"Normal"
+7	"Usman Tariq"	"Faisalabad"	2	2650.00	1.50	"Fast"
+8	"Hira Ali"	"Lahore"	2	3200.00	3.00	"Normal"
+=================================================================================
+Task 5
+Create a CTE for city-level analytics:
+city
+total_deliveries
+total_revenue
+average_delivery_days
+Then classify each city:
+total_revenue > 10000
+        → High Revenue
+5000–10000
+        → Medium Revenue
+< 5000
+        → Low Revenue
+---------------------------------------------------------------------------------
+QUERY:
+WHITH city_performace AS
+(SELECT
+	  	dr.city,
+		COUNT(dl.delivery_id) AS total_deliveries,
+		SUM(dl.delivery_fee) AS total_revenue,
+		ROUND(AVG(dl.delivery_days), 2) AS average_delivery_days,
+	  CASE
+		WHEN SUM(dl.delivery_fee) > 10000 THEN 'High Revenue'
+		WHEN SUM(dl.delivery_fee) BETWEEN 5000 AND 10000 THEN 'Medium Revenue'
+		ELSE 'low Revenue'
+	  END AS city_performance
+	  FROM drivers AS dr
+	  LEFT JOIN deliveries AS dl
+	  ON dr.driver_id = dl.driver_id
+	  GROUP BY dr.city)
+	  
+RESULTS:
+"Faisalabad"	5	6700.00	2.40	"Medium Revenue"
+"Lahore"	7	12700.00	3.00	"High Revenue"
+"Islamabad"	5	8900.00	2.80	"Medium Revenue"
+"Karachi"	3	6300.00	3.67	"Medium Revenue"
+====================================================================================
